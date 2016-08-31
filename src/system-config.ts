@@ -9,6 +9,9 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  'jquery': 'vendor/admin-lte/plugins/jQuery/jquery-2.2.3.min.js',
+  'bootstrap': 'vendor/admin-lte/bootstrap/js/bootstrap.min.js',
+  'adminlte': 'vendor/admin-lte/dist/js/app.min.js'
 };
 
 /** User packages configuration. */
@@ -36,6 +39,13 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/my-new-component',
+  'app/my-new-component2',
+  'app/header',
+  'app/sidebar',
+  'app/content',
+  'app/footer',
+  'app/controls',
   /** @cli-barrel */
 ];
 
