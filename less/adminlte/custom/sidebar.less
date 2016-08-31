@@ -1,0 +1,52 @@
+// Sidebar menu
+.sidebar-menu {
+
+  li.new {
+    > a {
+      color: #178FE6;
+
+      &:hover {
+        color: #178FE6!important;
+      }
+    }
+  }
+}
+
+.sidebar {
+  #mt-account-select-group {
+      width: 100%;
+
+      button {
+        border-left-width: 0;
+        border-right-width: 0;
+        border-color: #d2d6de;
+      }
+
+      ul {
+        width: 90%;
+        left: 10px;
+        text-align: center;
+        border-radius: 0;
+        color: @navbar-default-link-hover-color;
+
+        li {
+          &:first-child {
+            padding-bottom: 3px;
+            border-bottom-width: 1px;
+            border-bottom-style: dashed;
+            border-bottom-color: #d2d6de;
+          }
+
+          a {
+            padding-left: 4px;
+            padding-right: 4px;
+
+            &:hover {
+              background-color: @navbar-color;
+              color: #fff;
+            }
+          }
+        }
+      }
+  }
+}
