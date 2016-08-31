@@ -1,11 +1,11 @@
-// AdminLTE Gruntfile
+// MoneyTracker Gruntfile
 module.exports = function (grunt) {
 
   'use strict';
 
   grunt.initConfig({
     watch: {
-      // If any .less file changes in directory "build/less/" run the "less"-task.
+      // If any .less file changes in directory "less/adminlte-less/" run the "less"-task.
       files: [
         "less/adminlte-less/custom/*"
       ],
