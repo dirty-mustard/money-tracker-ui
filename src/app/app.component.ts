@@ -1,31 +1,14 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-
-import { HeaderComponent } from "./header/header.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { ContentComponent } from "./content/content.component";
-import { FooterComponent } from "./footer/footer.component";
-import { ControlsComponent } from "./controls/controls.component";
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
-  directives: [
-    HeaderComponent,
-    SidebarComponent,
-    ContentComponent,
-    FooterComponent,
-    ControlsComponent
-  ]
+  styleUrls: ['app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements AfterViewInit {
 
   constructor() { }
-
-  ngOnInit() {
-
-  }
 
   ngAfterViewInit() {
     System.import('adminlte');
