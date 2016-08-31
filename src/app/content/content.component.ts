@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-content',
+  selector: 'mt-content',
   templateUrl: 'content.component.html',
   styleUrls: ['content.component.css']
 })

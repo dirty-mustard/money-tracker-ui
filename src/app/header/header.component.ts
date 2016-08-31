@@ -4,7 +4,7 @@ declare var $:any;
 
 @Component({
   moduleId: module.id,
-  selector: 'app-header',
+  selector: 'mt-header',
   templateUrl: 'header.component.html',
   styleUrls: ['header.component.css']
 })

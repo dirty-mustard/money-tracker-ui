@@ -5,8 +5,8 @@ import { AppComponent } from './';
 import { HeaderComponent } from './header';
 import { SidebarComponent } from './sidebar';
 import { ContentComponent } from './content';
-import { ControlsComponent } from './controls';
 import { FooterComponent } from './footer';
+import { ControlsComponent } from './controls';
 
 @NgModule({
   imports: [BrowserModule],
@@ -14,8 +14,8 @@ import { FooterComponent } from './footer';
     HeaderComponent,
     SidebarComponent,
     ContentComponent,
-    ControlsComponent,
-    FooterComponent
+    FooterComponent,
+    ControlsComponent
   ],
   bootstrap: [AppComponent]
 })

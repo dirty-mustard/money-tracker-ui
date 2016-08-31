@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-root',
+  selector: 'mt-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
