@@ -15,30 +15,38 @@
   .main-header {
     .box-shadow(0px 1px 1px rgba(0, 0, 0, 0.05));
     .navbar-toggle {
-      color: #697c8a;
+      color: #333;
     }
     .navbar-brand {
-      color: #697c8a;
+      color: #333;
+      border-right: 1px solid #eee;
     }
     .navbar {
-      .navbar-variant(@navbar-color; #697c8a; #fff; @navbar-color);
+      .navbar-variant(#222d32; #fff; #999; #222d32);
       > .sidebar-toggle {
-        color: #697c8a;
+        color: #fff;
+        border-right: 1px solid #222;
+      }
+      .navbar-nav {
+        > li > a {
+          border-right: 1px solid #222;
+        }
       }
       .navbar-custom-menu .navbar-nav,
       .navbar-right {
         > li {
           > a {
-            color: #697c8a;
+            border-left: 1px solid #222;
             border-right-width: 0;
           }
         }
       }
     }
     > .logo {
-      .logo-variant(@navbar-color; #fff);
+      .logo-variant(#222d32; #fff);
+      border-right: 1px solid #222;
       @media (max-width: @screen-header-collapse) {
-        .logo-variant(#222; #fff);
+        .logo-variant(#222d32; #fff);
         border-right: none;
       }
     }
@@ -54,7 +62,17 @@
     box-shadow: none;
   }
   //Create the sidebar skin
-  .skin-light-sidebar(#fff);
+  .skin-dark-sidebar(#fff);
+
+  .pace {
+    .pace-progress {
+      background: #222;
+    }
+    .pace-activity {
+      border-top-color: #222;
+      border-left-color: #222;
+    }
+  }
 }
 
 #mt-filter-archived-transactions {
