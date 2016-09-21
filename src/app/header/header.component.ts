@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log($('h1').text());
+    // console.log($('h1').text());
   }
 
 }
