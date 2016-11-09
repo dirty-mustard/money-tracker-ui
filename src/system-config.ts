@@ -9,9 +9,19 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@angular/core': 'vendor/@angular/core/bundles/core.umd.js',
+  '@angular/common': 'vendor/@angular/common/bundles/common.umd.js',
+  '@angular/compiler': 'vendor/@angular/compiler/bundles/compiler.umd.js',
+  '@angular/platform-browser': 'vendor/@angular/platform-browser/bundles/platform-browser.umd.js',
+  '@angular/platform-browser-dynamic': 'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+  '@angular/http': 'vendor/@angular/http/bundles/http.umd.js',
+  '@angular/router': 'vendor/@angular/router/bundles/router.umd.js',
+  '@angular/forms': 'vendor/@angular/forms/bundles/forms.umd.js',
+
   'jquery': 'vendor/admin-lte/plugins/jQuery/jquery-2.2.3.min.js',
   'bootstrap': 'vendor/admin-lte/bootstrap/js/bootstrap.min.js',
-  'adminlte': 'vendor/admin-lte/dist/js/app.min.js'
+  'adminlte': 'vendor/admin-lte/dist/js/app.min.js',
+  'underscore': 'vendor/underscore/underscore-min.js'
 };
 
 /** User packages configuration. */
@@ -23,15 +33,6 @@ const packages: any = {
  * Everything underneath this line is managed by the CLI.
  **********************************************************************************************/
 const barrels: string[] = [
-  // Angular specific barrels.
-  '@angular/core',
-  '@angular/common',
-  '@angular/compiler',
-  '@angular/forms',
-  '@angular/http',
-  '@angular/router',
-  '@angular/platform-browser',
-  '@angular/platform-browser-dynamic',
 
   // Thirdparty barrels.
   'rxjs',
@@ -43,7 +44,11 @@ const barrels: string[] = [
   'app/sidebar',
   'app/content',
   'app/footer',
-  'app/controls'
+  'app/controls',
+  'app/home',
+  'app/filters/filters',
+  'app/filters/shared',
+  'app/filters/filter-form'
   /** @cli-barrel */
 ];
 
