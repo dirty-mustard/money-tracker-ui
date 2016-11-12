@@ -1,52 +1,26 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MoneyTracker</title>
-    <base href="/">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Money Tracker</title>
+  <base href="/">
 
-    {{#unless environment.production}}
-    <script src="/ember-cli-live-reload.js" type="text/javascript"></script>
-    {{/unless}}
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="vendor/admin-lte/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="css/AdminLTE.css">
-    <link rel="stylesheet" href="css/skin-money-tracker.css">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-  </head>
-  <body class="hold-transition skin-money-tracker sidebar-mini">
-    <div class="wrapper">
-      <mt-root></mt-root>
-    </div>
-    <!-- ./wrapper -->
-
-    {{#each scripts.polyfills}}
-      <script src="{{.}}"></script>
-    {{/each}}
-    <script>
-      System.import('system-config.js').then(function () {
-        System.import('jquery').then(function () {
-          System.import('bootstrap').then(function () {
-            System.import('main').catch(console.error.bind(console));
-          });
-        });
-      });
-    </script>
-  </body>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="hold-transition skin-money-tracker sidebar-mini">
+  <div class="wrapper">
+    <mt-root>Loading...</mt-root>
+  </div>
+</body>
 </html>

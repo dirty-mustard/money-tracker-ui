@@ -1,4 +1,4 @@
-import { MoneyTrackerUiPage } from './app.po';
+import { NewProjectPage } from './app.po';
 
 describe('money-tracker-ui App', function() {
   let page: MoneyTrackerUiPage;
