@@ -1,10 +1,10 @@
-import { MoneyTrackerUiPage } from './app.po';
+import { NewProjectPage } from './app.po';
 
-describe('money-tracker-ui App', function() {
-  let page: MoneyTrackerUiPage;
+describe('new-project App', function() {
+  let page: NewProjectPage;
 
   beforeEach(() => {
-    page = new MoneyTrackerUiPage();
+    page = new NewProjectPage();
   });
 
   it('should display message saying app works', () => {

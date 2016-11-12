@@ -1,4 +1,4 @@
-// MoneyTracker Gruntfile
+// Money Tracker UI Gruntfile
 module.exports = function (grunt) {
 
   'use strict';
@@ -12,22 +12,8 @@ module.exports = function (grunt) {
       tasks: ["less", "uglify"]
     },
     // "less"-task configuration
-    // This task will compile all less files upon saving to create both AdminLTE.css and AdminLTE.min.css
+    // This task will compile all less files upon saving to create both AdminLTE.min.css
     less: {
-      // Development not compressed
-      development: {
-        options: {
-          // Whether to compress or not
-          compress: false
-        },
-        files: {
-          // compilation.css  :  source.less
-          "public/css/AdminLTE.css": "less/adminlte-less/custom/AdminLTE.less",
-          //Non minified skin files
-
-          "public/css/skin-money-tracker.css": "less/adminlte-less/custom/skin-money-tracker.less"
-        }
-      },
       // Production compresses version
       production: {
         options: {
@@ -36,9 +22,9 @@ module.exports = function (grunt) {
         },
         files: {
           // compilation.css  :  source.less
-          "dist/css/AdminLTE.min.css": "less/adminlte-less/custom/AdminLTE.less",
+          "src/assets/css/AdminLTE.min.css": "less/adminlte-less/custom/AdminLTE.less",
           // Skins minified
-          "dist/css/skins/skin-money-tracker.min.css": "less/adminlte-less/custom/skin-money-tracker.less"
+          "src/assets/css/skin-money-tracker.min.css": "less/adminlte-less/custom/skin-money-tracker.less"
         }
       }
     },
@@ -49,7 +35,7 @@ module.exports = function (grunt) {
         csslintrc: 'less/adminlte-less/.csslintrc'
       },
       dist: [
-        'public/css/AdminLTE.css'
+        'src/assets/css/AdminLTE.min.css'
       ]
     }
 
