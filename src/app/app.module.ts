@@ -12,6 +12,9 @@ import { ContentComponent } from './content';
 import { FooterComponent } from './footer';
 import { ControlsComponent } from './controls';
 import { TransactionsListComponent } from './transactions/list';
+import { MtCurrencyPipe } from './shared/pipes/mt-currency.pipe';
+import { MtDatePipe } from './shared/pipes/mt-date.pipe';
+import { MtTextPipe } from './shared/pipes/mt-text.pipe';
 
 @NgModule({
   providers: [
@@ -24,7 +27,10 @@ import { TransactionsListComponent } from './transactions/list';
     ContentComponent,
     FooterComponent,
     ControlsComponent,
-    TransactionsListComponent
+    TransactionsListComponent,
+    MtCurrencyPipe,
+    MtDatePipe,
+    MtTextPipe
   ],
   imports: [
     BrowserModule,
