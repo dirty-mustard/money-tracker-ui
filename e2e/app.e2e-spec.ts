@@ -1,10 +1,10 @@
 import { NewProjectPage } from './app.po';
 
-describe('new-project App', function() {
-  let page: NewProjectPage;
+describe('money-tracker-ui App', function() {
+  let page: MoneyTrackerUiPage;
 
   beforeEach(() => {
-    page = new NewProjectPage();
+    page = new MoneyTrackerUiPage();
   });
 
   it('should display message saying app works', () => {
