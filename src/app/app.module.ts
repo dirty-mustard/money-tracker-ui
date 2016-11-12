@@ -12,8 +12,9 @@ import { ControlsComponent } from './controls';
 import { HomeComponent } from './home';
 
 import { FilterService } from './filters/shared';
-import { FilterFormComponent } from "./filters/filter-form";
+import { FilterFormComponent } from "./filters/filters-form";
 import { FilterComponent } from "./filters/filters";
+import { FilterListComponent } from "./filters/filters-list";
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { FilterComponent } from "./filters/filters";
     ControlsComponent,
     HomeComponent,
     FilterComponent,
+    FilterListComponent,
     FilterFormComponent,
   ],
   providers: [ appRoutingProviders, FilterService, FormBuilder ],

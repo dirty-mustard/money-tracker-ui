@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Http, Response} from '@angular/http';
 
-import { Filter, FilterAmount } from './';
+import { Filter } from './';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class FilterService {
@@ -16,12 +17,22 @@ export class FilterService {
             });
     }
 
-  public list() {
-    console.log('calling');
-    this.http.get(`http://localhost:8080/api/filters`)
-      .subscribe(response => {
-        console.log(response.json());
-      });
-  }
+    public list(): Observable<Filter[]> {
+        return this.http.get(`http://localhost:8080/api/filters`)
+          .map((r: Response) => {
+            console.log(r.json());
+            return (r) ? r.json() as Filter[] : Observable.of<Filter[]>([]);
+          })
+          .catch((error:any) => Observable.of<Filter[]>([]));
+    }
+
+    public get(id): Observable<Filter> {
+      return this.http.get(`http://localhost:8080/api/filters/${id}`)
+        .map((r: Response) => {
+          console.log(r.json());
+          return (r) ? r.json() as Filter : Observable.of<Filter>();
+        })
+        .catch((error:any) => Observable.of<Filter>(new Filter));
+    }
 
 }

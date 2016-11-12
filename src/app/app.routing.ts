@@ -2,7 +2,7 @@ import { Routes, RouterModule }   from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { HomeComponent } from './home';
-import { FilterFormComponent } from './filters/filter-form';
+import { FilterFormComponent } from './filters/filters-form';
 import { FilterComponent } from "./filters/filters";
 
 export const appRoutes: Routes = [
