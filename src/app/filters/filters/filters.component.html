@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-md-4">
+    <mt-filter-list [filters]="filters"></mt-filter-list>
+  </div>
+  <div class="col-md-8">
+    <mt-filter-form [filter]="filter" (deleteOnClick)="deleteOnClick($event)"
+        (saveOnClick)="saveOnClick($event)"></mt-filter-form>
+  </div>
+</div>
