@@ -10,25 +10,32 @@
   <!-- /.box-header -->
   <form role="form" (ngSubmit)="onSubmit()" #filterForm="ngForm">
     <div class="box-body">
+
+      <div [hidden]="!containsErrors()" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> {{ errorMessage }}</h4>
+      </div>
       <!-- text input -->
 
       <div class="row">
         <div class="col-sm-12">
-          <div class="form-group">
+          <div class="form-group" [class.has-error]="hasError('name')">
             <label>Name</label>
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="fa fa-file-text"></i>
               </div>
-              <input type="text" name="name" class="form-control" placeholder="Enter name..." [(ngModel)]="filter.name">
+              <input type="text" name="name" class="form-control" placeholder="Enter name..."
+                     [(ngModel)]="filter.name">
             </div>
+            <span *ngIf="hasError('name')" class="help-block">{{ getError('name') }}</span>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-6">
-          <div class="form-group">
+          <div class="form-group" [class.has-error]="hasError('from')">
             <label>From</label>
             <div class="input-group">
               <div class="input-group-addon">
@@ -36,11 +43,12 @@
               </div>
               <input type="text" name="date_from" class="form-control" placeholder="Enter from date..." [(ngModel)]="filter.from">
             </div>
+            <span *ngIf="hasError('from')" class="help-block">{{ getError('from') }}</span>
           </div>
         </div>
 
         <div class="col-sm-6">
-          <div class="form-group">
+          <div class="form-group" [class.has-error]="hasError('to')">
             <label>To</label>
             <div class="input-group">
               <div class="input-group-addon">
@@ -49,11 +57,12 @@
               <input type="text" name="date_to" class="form-control" placeholder="Enter to date..."
                      [(ngModel)]="filter.to">
             </div>
+            <span *ngIf="hasError('to')" class="help-block">{{ getError('to') }}</span>
           </div>
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" [class.has-error]="hasError('description')">
         <label>Description</label>
         <div class="input-group">
           <div class="input-group-addon">
@@ -62,11 +71,12 @@
           <input type="text" name="description" class="form-control" placeholder="Enter description..."
                  [(ngModel)]="filter.description">
         </div>
+        <span *ngIf="hasError('description')" class="help-block">{{ getError('description') }}</span>
       </div>
 
       <div class="row">
         <div class="col-xs-6">
-          <div class="form-group">
+          <div class="form-group" [class.has-error]="hasError('accountHolder')">
             <label>Account holder</label>
             <div class="input-group">
               <div class="input-group-addon">
@@ -75,11 +85,12 @@
               <input type="text" name="accountHolder" class="form-control" placeholder="Account holder name..."
                      [(ngModel)]="filter.accountHolder">
             </div>
+            <span *ngIf="hasError('accountHolder')" class="help-block">{{ getError('accountHolder') }}</span>
           </div>
         </div>
 
         <div class="col-xs-6">
-          <div class="form-group">
+          <div class="form-group" [class.has-error]="hasError('account')">
             <label>Account</label>
             <div class="input-group">
               <div class="input-group-addon">
@@ -88,6 +99,7 @@
               <input type="text" name="account" class="form-control" placeholder="Account..."
                      [(ngModel)]="filter.account">
             </div>
+            <span *ngIf="hasError('account')" class="help-block">{{ getError('account') }}</span>
           </div>
         </div>
       </div>
@@ -119,8 +131,8 @@
           </div>
         </div>
       </div>
-
     </div>
+
     <div class="box-footer">
       <button type="button" *ngIf="filter.id" (click)="deleteOnClick()" class="btn btn-default pull-left">Delete</button>
       <button type="submit" *ngIf="!filter.id" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">

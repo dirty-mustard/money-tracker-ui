@@ -3,6 +3,7 @@ import { Filter } from "../shared";
 import { FilterService } from "../shared";
 import { ActivatedRoute } from "@angular/router";
 import { isUndefined } from "util";
+import { Error } from "../../shared";
 
 declare var _ : any;
 
@@ -16,13 +17,14 @@ export class FiltersComponent implements OnInit {
   filter: Filter = new Filter();
   filters: Filter[] = [];
 
+  errorMessage: string;
+  errors: Object = {};
+
   constructor(private filterService: FilterService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.filterService.get(params['id']).subscribe((f: Filter) => this.filter = f);
-    });
+    this._loadFilter();
     this._loadFilters();
   }
 
@@ -31,10 +33,10 @@ export class FiltersComponent implements OnInit {
   }
 
   public saveOnClick(filter) {
-    _.bindAll(this, 'successHandler');
+    _.bindAll(this, 'successHandler', 'errorHandler');
     (isUndefined(filter.id))
-      ? this.filterService.create(filter).subscribe(this.successHandler)
-      : this.filterService.update(filter).subscribe(this.successHandler);
+      ? this.filterService.create(filter).subscribe(this.successHandler, this.errorHandler)
+      : this.filterService.update(filter).subscribe(this.successHandler, this.errorHandler);
   }
 
   private deleteSuccessHandler() {
@@ -44,6 +46,25 @@ export class FiltersComponent implements OnInit {
   private successHandler(f: Filter) {
     this.filter = f;
     this._loadFilters();
+    this.clearErrors();
+  }
+
+  clearErrors() {
+    this.errors = {};
+    this.errorMessage = null;
+  }
+
+  private errorHandler(error: Error) {
+    this.errorMessage  = error.error;
+    _.each(_.keys(error.errorDetails), (t: string) => this.errors[t] = error.errorDetails[t]);
+  }
+
+  private _loadFilter() {
+    this.route.params.subscribe(params => {
+      if (_.contains(_.keys(params), 'id')) {
+        this.filterService.get(params['id']).subscribe((f: Filter) => this.filter = f);
+      }
+    });
   }
 
   private _loadFilters() {

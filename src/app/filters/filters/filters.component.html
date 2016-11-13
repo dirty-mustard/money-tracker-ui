@@ -3,7 +3,7 @@
     <mt-filter-list [filters]="filters"></mt-filter-list>
   </div>
   <div class="col-md-8">
-    <mt-filter-form [filter]="filter" (deleteOnClick)="deleteOnClick($event)"
-        (saveOnClick)="saveOnClick($event)"></mt-filter-form>
+    <mt-filter-form [errors]="errors" [errorMessage]="errorMessage" [filter]="filter"
+        (deleteOnClick)="deleteOnClick($event)" (saveOnClick)="saveOnClick($event)"></mt-filter-form>
   </div>
 </div>

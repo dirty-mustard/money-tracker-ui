@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Filter } from './';
+import { Error } from '../../shared';
 import { Observable } from 'rxjs/Rx';
 
 declare var _ : any;
@@ -11,7 +12,7 @@ export class FilterService {
 
     constructor(private http: Http) {}
 
-    public create(filter: Filter) : Observable<Filter> {
+    public create(filter: Filter): Observable<Filter> {
         return this.http.post(`http://localhost:8080/api/filters`, filter)
           .map((r: Response) => Filter.fromJson(r.json()))
           .catch(this.errorHandler);
@@ -27,7 +28,7 @@ export class FilterService {
         .catch(this.errorHandler);
     }
 
-    public delete(filter: Filter) : Observable<Filter> {
+    public delete(filter: Filter) : Observable<Response> {
       return this.http.delete(`http://localhost:8080/api/filters/${filter.id}`)
         .catch(this.errorHandler);
     }
@@ -53,8 +54,7 @@ export class FilterService {
     }
 
     public errorHandler(error: any) {
-      console.log('breaking' + error);
-      return Observable.of<Filter>(new Filter)
+      return Observable.throw(Error.fromJson(error.json()) || 'Server error');
     }
 
 }

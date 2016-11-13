@@ -1,6 +1,8 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Filter } from "../shared";
 
+declare var _ : any;
+
 @Component({
   selector: 'mt-filter-form',
   templateUrl: 'filters-form.component.html',
@@ -9,12 +11,12 @@ import { Filter } from "../shared";
 export class FilterFormComponent {
 
   @Input('filter') filter: Filter = new Filter();
+  @Input('errors') errors: Object = {};
+  @Input('errorMessage') errorMessage: String;
   @Output('saveOnClick') saveEvent = new EventEmitter<Filter>();
   @Output('deleteOnClick') deleteEvent = new EventEmitter<Filter>();
-  submitted: boolean = false;
 
   onSubmit() {
-    this.submitted = true;
     this.saveEvent.emit(this.filter);
   }
 
@@ -23,9 +25,19 @@ export class FilterFormComponent {
   }
 
   newFilterOnClick() {
-    console.log('neww');
     this.filter = new Filter();
-    this.submitted = false;
+  }
+
+  containsErrors() : boolean {
+    return _.keys(this.errors).length > 0;
+  }
+
+  hasError(field: string) {
+    return _.contains(_.keys(this.errors), field);
+  }
+
+  getError(field: string) {
+    return (this.hasError(field)) ? this.errors[field] : 'Unknown error.';
   }
 
 }
