@@ -22,15 +22,24 @@
     "@angular/router": "~3.1.0",
     "admin-lte": "^2.3.8",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
+    "underscore": "^1.8.3",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
+    "@types/underscore": "^1.7.33",
     "angular-cli": "1.0.0-beta.19-3",
     "codelyzer": "1.0.0-beta.1",
+    "grunt": "~0.4.5",
+    "grunt-bootlint": "^0.9.1",
+    "grunt-contrib-csslint": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-watch": "~0.6.1",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
@@ -42,12 +51,9 @@
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
     "typescript": "~2.0.3",
-    "webdriver-manager": "10.2.5",
-    "grunt": "~0.4.5",
-    "grunt-bootlint": "^0.9.1",
-    "grunt-contrib-csslint": "^0.5.0",
-    "grunt-contrib-cssmin": "^0.12.2",
-    "grunt-contrib-less": "^0.12.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "webdriver-manager": "10.2.5"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   }
 }

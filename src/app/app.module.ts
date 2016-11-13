@@ -1,14 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { routing, appRoutingProviders } from './app.routing';
 import { HeaderComponent } from './header';
 import { SidebarComponent } from './sidebar';
 import { ContentComponent } from './content';
 import { FooterComponent } from './footer';
 import { ControlsComponent } from './controls';
+import { FiltersComponent } from "./filters/filters";
+import { FilterFormComponent } from "./filters/filters-form";
+import { FilterListComponent } from "./filters/filters-list";
+import { FilterService } from "./filters/shared/filter.service";
+import { HomeComponent } from "./home";
+import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [
@@ -17,14 +23,21 @@ import { ControlsComponent } from './controls';
     SidebarComponent,
     ContentComponent,
     FooterComponent,
-    ControlsComponent
+    ControlsComponent,
+    HomeComponent,
+    FilterFormComponent,
+    FilterListComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    ReactiveFormsModule,
+    HttpModule,
+    routing
   ],
-  bootstrap: [AppComponent]
+  providers: [ appRoutingProviders, FilterService, FormBuilder],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {
 
