@@ -1,3 +1,5 @@
+import { Tag } from "./tag.model";
+
 declare var _: any;
 
 export class Filter {
@@ -12,7 +14,7 @@ export class Filter {
   public accountHolder: string = undefined;
   public account: string = undefined;
   public offsetAccount: string = undefined;
-  public tags: number[] = [];
+  public tags: Tag[] = [];
   public options: string[] = [];
 
   constructor() {

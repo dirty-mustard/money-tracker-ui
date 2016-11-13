@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Filter } from './';
-import { Error } from '../../shared';
+import { Filter, Error } from '../model';
 import { Observable } from 'rxjs/Rx';
 
 declare var _ : any;

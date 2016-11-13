@@ -1,1 +1,1 @@
-export * from './error.model'
+export * from './model/error.model'

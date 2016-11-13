@@ -1,5 +1,5 @@
-import { Filter, FilterService } from "../shared";
 import { OnInit, Component, Input } from "@angular/core";
+import { Filter } from "../../shared/model";
 
 @Component({
   selector: 'mt-filter-list',

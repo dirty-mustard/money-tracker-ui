@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Filter } from "../shared";
+import { Filter, Tag } from "../../shared/model";
+import { FilterFormService } from "../shared";
 
 declare var _ : any;
 

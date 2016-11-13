@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule, FormBuilder} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { routing, appRoutingProviders } from './app.routing';
@@ -12,9 +12,10 @@ import { ControlsComponent } from './controls';
 import { FiltersComponent } from "./filters/filters";
 import { FilterFormComponent } from "./filters/filters-form";
 import { FilterListComponent } from "./filters/filters-list";
-import { FilterService } from "./filters/shared/filter.service";
+import { FilterService, TagService } from "./shared/service";
 import { HomeComponent } from "./home";
 import { AppComponent } from "./app.component";
+import { FilterFormService } from "./filters/shared";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AppComponent } from "./app.component";
     HttpModule,
     routing
   ],
-  providers: [ appRoutingProviders, FilterService, FormBuilder],
+  providers: [ appRoutingProviders, FilterService, TagService, FilterFormService, FormBuilder],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
