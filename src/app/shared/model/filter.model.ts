@@ -14,7 +14,7 @@ export class Filter {
   public accountHolder: string = undefined;
   public account: string = undefined;
   public offsetAccount: string = undefined;
-  public tags: Tag[] = [];
+  public tags = [];
   public options: string[] = [];
 
   constructor() {

@@ -32,16 +32,56 @@ export class FilterFormService {
       });
   }
 
-  public list(): Observable<Filter[]> {
+  public listTags(): Observable<Tag[]> {
+    return this.tagService.list();
+  }
+
+  public listFilters(): Observable<Filter[]> {
     return this.filterService.list();
   }
 
   public create(filter: Filter): Observable<Filter> {
-    return this.filterService.create(filter);
+    let f = filter;
+    f.tags = f.tags.map((t: Tag) => { return t.id });
+    return this.filterService.create(filter)
+        .flatMap((filter: Filter) => {
+          let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
+          return (tagIds.length > 0)
+              ? Observable.forkJoin(Observable.of(filter), this.tagService.getByList(tagIds))
+              : Observable.forkJoin(Observable.of(filter), Observable.of<Tag[]>([]));
+        }).map((filterDetails: Filter) => {
+          let filter: Filter = filterDetails[0];
+          if (!_.isUndefined(filterDetails[1])
+              && _.isArray(filterDetails[1])
+              && filterDetails[1].length > 0
+          ) {
+            filter.tags = filterDetails[1];
+          }
+
+          return filter;
+        });
   }
 
   public update(filter: Filter) : Observable<Filter> {
-    return this.filterService.update(filter);
+    let f = filter;
+    f.tags = f.tags.map((t: Tag) => { return t.id });
+    return this.filterService.update(f)
+        .flatMap((filter: Filter) => {
+          let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
+          return (tagIds.length > 0)
+              ? Observable.forkJoin(Observable.of(filter), this.tagService.getByList(tagIds))
+              : Observable.forkJoin(Observable.of(filter), Observable.of<Tag[]>([]));
+        }).map((filterDetails: Filter) => {
+          let filter: Filter = filterDetails[0];
+          if (!_.isUndefined(filterDetails[1])
+              && _.isArray(filterDetails[1])
+              && filterDetails[1].length > 0
+          ) {
+            filter.tags = filterDetails[1];
+          }
+
+          return filter;
+        });
   }
 
   public delete(filter: Filter) : Observable<Response> {

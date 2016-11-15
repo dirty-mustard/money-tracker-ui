@@ -1,14 +1,21 @@
-<div class="box box-widget widget-user-2">
+<div id="mt-filters-list-box" class="box box-widget widget-user-2">
   <!-- Add the bg color to the header using any of the bg-* classes -->
   <div class="widget-user-header bg-yellow">
     <!-- /.widget-user-image -->
-    <h3 class="widget-user-username">Filters</h3>
+    <h4 class="widget-user-username" id="mt-filters-list-select-filter-label">Select a filter</h4>
   </div>
-  <div class="box-footer no-padding">
-    <ul class="nav nav-stacked">
-      <li *ngFor="let filter of filters">
-        <a [routerLink]="['/filters', filter.id]">{{ filter.name }}</a>
-      </li>
-    </ul>
+  <div class="box-footer">
+    <div class="input-group">
+      <select class="form-control" (change)="onFilterSelected($event.target.value)">
+        <option *ngIf="selectedFilter.id == undefined" disabled selected>Select a filter</option>
+        <option *ngFor="let filter of filters" value="{{ filter.id }}" [selected]="filter.id == selectedFilter.id">
+          {{ filter.name }}
+        </option>
+      </select>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-flat btn-primary" (click)="newFilterOnClick()">New Filter</button>
+      </span>
+    </div>
+
   </div>
 </div>

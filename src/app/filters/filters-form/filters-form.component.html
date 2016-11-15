@@ -1,10 +1,12 @@
 <!-- general form elements disabled -->
-<div class="box box-warning">
+<div class="box box-warning" [class.collapsed-box]="collapsed">
   <div class="box-header with-border">
     <h3 class="box-title">Filter</h3>
 
     <div class="box-tools pull-right">
-      <button type="button" class="btn btn-box-tool" (click)="newFilterOnClick()">New</button>
+      <button type="button" class="btn btn-box-tool" data-widget="collapse">
+        <i class="fa" [class.fa-plus]="collapsed" [class.fa-minus]="!collapsed"></i>
+      </button>
     </div>
   </div>
   <!-- /.box-header -->
@@ -132,17 +134,50 @@
         </div>
       </div>
 
-      Tags: <code *ngFor="let tag of filter.tags">{{ tag.name }}</code>
-    </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>Tag</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-tag"></i>
+              </div>
+              <input id="country" name="tags" type="text" class="form-control validate filter-input"
+                     [(ngModel)]=query (keyup)=tagsOnKeyUp()>
+              <span class="input-group-addon">{{ selectedTags.length }} selected</span>
+            </div>
 
-    <div class="box-footer">
-      <button type="button" *ngIf="filter.id" (click)="deleteOnClick()" class="btn btn-default pull-left">Delete</button>
-      <button type="submit" *ngIf="!filter.id" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
-        Create filter
-      </button>
-      <button type="submit" *ngIf="filter.id" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
-        Update filter
-      </button>
+            <label id="mt-filter-form-selected-tags-label">Selected tags:</label>
+            <span class="label label-info mt-filter-remove-selected-tag" *ngIf="!(selectedTags.length > 0)">
+              No tags selected
+            </span>
+            <template [ngIf]="selectedTags.length > 0">
+              <span class="mt-filter-form-selected-tag label label-info" *ngFor="let tag of selectedTags">
+                  {{ tag.name }} <i class="glyphicon glyphicon-remove-circle" (click)="remove(tag);"></i>
+              </span>
+            </template>
+
+            <div id="mt-filter-form-tag-suggestions" *ngIf="filteredList.length > 0">
+              <ul id="mt-filter-form-tag-autocompletion">
+                <li *ngFor="let item of filteredList" (click)="select(item)">
+                  <i class="fa fa-arrow-circle-right" [ngStyle]="{ 'color': '#fff' }"></i>
+                  <label class="mt-filter-form-tag-autocompletion-item">{{item.name}}</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-footer">
+        <button type="button" *ngIf="filter.id" (click)="deleteOnClick()" class="btn btn-default pull-left">Delete</button>
+        <button type="submit" *ngIf="!filter.id" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
+          Create filter
+        </button>
+        <button type="submit" *ngIf="filter.id" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
+          Update filter
+        </button>
+      </div>
     </div>
   </form>
   <!-- /.box-body -->

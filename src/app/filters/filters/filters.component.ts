@@ -3,8 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { isUndefined } from "util";
 import { Error } from "../../shared";
 import { Filter } from "../../shared/model";
-import { FilterService } from "../../shared/service";
 import { FilterFormService } from "../shared";
+import { Tag } from "../../shared/model/tag.model";
 
 declare var _ : any;
 
@@ -17,6 +17,7 @@ export class FiltersComponent implements OnInit {
 
   filter: Filter = new Filter();
   filters: Filter[] = [];
+  tags: Tag[] = [];
 
   errorMessage: string;
   errors: Object = {};
@@ -25,15 +26,29 @@ export class FiltersComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._loadFilter();
+    this.route.params.subscribe(params => {
+      if (_.contains(_.keys(params), 'id')) {
+        this._loadFilter(params['id']);
+      }
+    });
     this._loadFilters();
+    this._loadTags();
+  }
+
+  public newOnClick() {
+    this.filter = new Filter();
+    this.clearErrors();
   }
 
   public deleteOnClick(filter) {
     this.filterFormService.delete(filter).subscribe(this.deleteSuccessHandler.bind(this));
   }
 
-  public saveOnClick(filter) {
+  public onFilterSelected(filterId: number) {
+    this._loadFilter(filterId);
+  }
+
+  public saveOnClick(filter: Filter) {
     _.bindAll(this, 'successHandler', 'errorHandler');
     (isUndefined(filter.id))
       ? this.filterFormService.create(filter).subscribe(this.successHandler, this.errorHandler)
@@ -60,19 +75,18 @@ export class FiltersComponent implements OnInit {
     _.each(_.keys(error.errorDetails), (t: string) => this.errors[t] = error.errorDetails[t]);
   }
 
-  private _loadFilter() {
-    this.route.params.subscribe(params => {
-      if (_.contains(_.keys(params), 'id')) {
-        this.filterFormService.get(params['id']).subscribe((f: Filter) => {
-          this.filter = f;
-          console.log(f);
-        });
-      }
+  private _loadFilter(filterId: number) {
+    this.filterFormService.get(filterId).subscribe((f: Filter) => {
+      this.filter = f;
     });
   }
 
   private _loadFilters() {
-    this.filterFormService.list().subscribe((f: Filter[]) => this.filters = f);
+    this.filterFormService.listFilters().subscribe((f: Filter[]) => this.filters = f);
+  }
+
+  private _loadTags() {
+    this.filterFormService.listTags().subscribe((t: Tag[]) => this.tags = t);
   }
 
 }
