@@ -64,16 +64,20 @@
         </div>
       </div>
 
-      <div class="form-group" [class.has-error]="hasError('description')">
-        <label>Description</label>
-        <div class="input-group">
-          <div class="input-group-addon">
-            <i class="fa fa-comment-o"></i>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group" [class.has-error]="hasError('description')">
+            <label>Description</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-comment-o"></i>
+              </div>
+              <input type="text" name="description" class="form-control" placeholder="Enter description..."
+                     [(ngModel)]="filter.description">
+            </div>
+            <span *ngIf="hasError('description')" class="help-block">{{ getError('description') }}</span>
           </div>
-          <input type="text" name="description" class="form-control" placeholder="Enter description..."
-                 [(ngModel)]="filter.description">
         </div>
-        <span *ngIf="hasError('description')" class="help-block">{{ getError('description') }}</span>
       </div>
 
       <div class="row">
@@ -162,6 +166,59 @@
                 <li *ngFor="let item of filteredList" (click)="select(item)">
                   <i class="fa fa-arrow-circle-right" [ngStyle]="{ 'color': '#fff' }"></i>
                   <label class="mt-filter-form-tag-autocompletion-item">{{item.name}}</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <div id="mt-filter-archived-transactions" class="checkbox checkbox-primary">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <input id="mt-filter-archived-transactions-checkbox" type="checkbox"
+                         [checked]="hasArchivedOptionEnabled()">
+                  <label for="mt-filter-archived-transactions-checkbox">
+                    Show archived transactions
+                  </label>
+                  <span id="helpBlock" class="help-block">
+                    When selecting this checkbox, only archived transactions will been showed.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div id="mt-filter-locked-transactions" class="checkbox checkbox-primary">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <input id="mt-filter-locked-transactions-checkbox" type="checkbox"
+                         [checked]="hasLockedTransactionOptionEnabled()">
+                  <label for="mt-filter-locked-transactions-checkbox">
+                    Show locked transactions
+                  </label>
+                  <span class="help-block">
+                    When selecting this checkbox, only locked transactions will been showed.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+            <div id="mt-filter-untagged-transactions" class="checkbox checkbox-primary">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <input id="mt-filter-untagged-transactions-checkbox" type="checkbox"
+                         [checked]="hasUntaggedTransactionOptionEnabled()">
+                  <label for="mt-filter-untagged-transactions-checkbox">
+                    Show locked transactions
+                  </label>
+                  <span class="help-block">
+                    When selecting this checkbox, only transactions without any tag will been showed.
+                  </span>
                 </li>
               </ul>
             </div>

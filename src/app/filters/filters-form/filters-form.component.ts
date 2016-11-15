@@ -1,7 +1,7 @@
-import { Component, Output, EventEmitter, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Filter } from "../../shared/model";
 
-import { Tag } from "../../shared/model/tag.model";
+import { Tag, ARCHIVED, LOCKED, UNTAGGED } from "../../shared/model";
 
 declare var _ : any;
 
@@ -70,6 +70,18 @@ export class FilterFormComponent implements OnChanges {
 
   containsErrors() : boolean {
     return _.keys(this.errors).length > 0;
+  }
+
+  hasArchivedOptionEnabled() {
+    return _.contains(this.filter.options, ARCHIVED);
+  }
+
+  hasLockedTransactionOptionEnabled() {
+    return _.contains(this.filter.options, LOCKED);
+  }
+
+  hasUntaggedTransactionOptionEnabled() {
+    return _.contains(this.filter.options, UNTAGGED);
   }
 
   hasError(field: string) {

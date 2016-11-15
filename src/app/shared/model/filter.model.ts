@@ -46,6 +46,10 @@ export class FilterAmount {
   }
 }
 
+export const ARCHIVED = 'ARCHIVED';
+export const LOCKED = 'LOCKED';
+export const UNTAGGED = 'UNTAGGED';
+
 export class FilterOption {
 
   value: string;
