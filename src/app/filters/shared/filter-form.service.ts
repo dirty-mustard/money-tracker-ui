@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { FilterService, TagService } from "../../shared/service";
-import { Filter, Tag, Error } from '../../shared/model';
+import { Filter, Tag } from '../../shared/model';
 
 declare var _ : any;
 

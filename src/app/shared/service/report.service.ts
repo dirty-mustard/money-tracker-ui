@@ -1,54 +1,54 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Filter, Error } from '../model';
+import { Report, Error } from '../model';
 import { Observable } from 'rxjs/Rx';
 
 declare var _ : any;
 
 @Injectable()
-export class FilterService {
+export class ReportService {
 
     constructor(private http: Http) {}
 
-    public create(filter: Filter): Observable<Filter> {
-        return this.http.post(`http://localhost:8080/api/filters`, filter)
-          .map((r: Response) => Filter.fromJson(r.json()))
+    public create(report: Report): Observable<Report> {
+        return this.http.post(`http://localhost:8080/api/reports`, report)
+          .map((r: Response) => Report.fromJson(r.json()))
           .catch(this.errorHandler);
     }
 
-    public update(filter: Filter) : Observable<Filter> {
-      let body = JSON.stringify(filter);
+    public update(report: Report) : Observable<Report> {
+      let body = JSON.stringify(report);
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
 
-      return this.http.put(`http://localhost:8080/api/filters/${filter.id}`, body, options)
-        .map((r: Response) => Filter.fromJson(r.json()))
+      return this.http.put(`http://localhost:8080/api/reports/${report.id}`, body, options)
+        .map((r: Response) => Report.fromJson(r.json()))
         .catch(this.errorHandler);
     }
 
-    public delete(filter: Filter) : Observable<Response> {
-      return this.http.delete(`http://localhost:8080/api/filters/${filter.id}`)
+    public delete(report: Report) : Observable<Response> {
+      return this.http.delete(`http://localhost:8080/api/reports/${report.id}`)
         .catch(this.errorHandler);
     }
 
-    public list(): Observable<Filter[]> {
-        return this.http.get(`http://localhost:8080/api/filters`)
+    public list(): Observable<Report[]> {
+        return this.http.get(`http://localhost:8080/api/reports`)
           .map((r: Response) => {
             if (r) {
-              let filters: Filter[] = [];
-              _.each(r.json(), f => filters.push(Filter.fromJson(f)));
-              return filters;
+              let reports: Report[] = [];
+              _.each(r.json(), f => reports.push(Report.fromJson(f)));
+              return reports;
             } else {
-              return Observable.of<Filter[]>([]);
+              return Observable.of<Report[]>([]);
             }
           })
           .catch(this.errorHandler);
     }
 
-    public get(id): Observable<Filter> {
-      return this.http.get(`http://localhost:8080/api/filters/${id}`)
-        .map((r: Response) => Filter.fromJson(r.json()))
+    public get(id): Observable<Report> {
+      return this.http.get(`http://localhost:8080/api/reports/${id}`)
+        .map((r: Response) => Report.fromJson(r.json()))
         .catch(this.errorHandler);
     }
 

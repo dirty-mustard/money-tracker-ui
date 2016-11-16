@@ -16,6 +16,10 @@ import { FilterService, TagService } from "./shared/service";
 import { HomeComponent } from "./home";
 import { AppComponent } from "./app.component";
 import { FilterFormService } from "./filters/shared";
+import { ReportFormService } from "./reports/shared";
+import { ReportFormComponent } from "./reports/report-form";
+import { ReportService } from "./shared/service/report.service";
+import { ReportResolver } from "./shared/resolver";
 
 @NgModule({
   declarations: [
@@ -26,9 +30,14 @@ import { FilterFormService } from "./filters/shared";
     FooterComponent,
     ControlsComponent,
     HomeComponent,
+
+    // Filters
     FilterFormComponent,
     FilterListComponent,
-    FiltersComponent
+    FiltersComponent,
+
+    // Reports
+    ReportFormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,22 @@ import { FilterFormService } from "./filters/shared";
     HttpModule,
     routing
   ],
-  providers: [ appRoutingProviders, FilterService, TagService, FilterFormService, FormBuilder],
+  providers: [
+    appRoutingProviders,
+    FormBuilder,
+
+    // Filters
+    FilterService,
+
+    FilterFormService ,
+    // Reports
+    ReportService,
+    ReportResolver,
+
+    ReportFormService,
+    // Tags
+    TagService,
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

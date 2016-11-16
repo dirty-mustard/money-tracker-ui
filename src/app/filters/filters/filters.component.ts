@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { isUndefined } from "util";
 import { Error } from "../../shared";
@@ -15,8 +15,10 @@ declare var _ : any;
 })
 export class FiltersComponent implements OnInit {
 
+  @Input('filterFormCollapsed') filterFormCollapsed: boolean = false;
+  @Input('filterId') filterId: number;
   filter: Filter = new Filter();
-  filters: Filter[] = [];
+  availableFilters: Filter[] = [];
   tags: Tag[] = [];
 
   errorMessage: string;
@@ -26,11 +28,7 @@ export class FiltersComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      if (_.contains(_.keys(params), 'id')) {
-        this._loadFilter(params['id']);
-      }
-    });
+    this._loadFilter(this.filterId);
     this._loadFilters();
     this._loadTags();
   }
@@ -46,6 +44,10 @@ export class FiltersComponent implements OnInit {
 
   public onFilterSelected(filterId: number) {
     this._loadFilter(filterId);
+  }
+
+  public toggleFilterDetailsOnClick() {
+    this.filterFormCollapsed = !this.filterFormCollapsed;
   }
 
   public saveOnClick(filter: Filter) {
@@ -82,7 +84,7 @@ export class FiltersComponent implements OnInit {
   }
 
   private _loadFilters() {
-    this.filterFormService.listFilters().subscribe((f: Filter[]) => this.filters = f);
+    this.filterFormService.listFilters().subscribe((f: Filter[]) => this.availableFilters = f);
   }
 
   private _loadTags() {

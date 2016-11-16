@@ -1,1 +1,1 @@
-export * from './filters-form.component';
+export * from './report-form.component';

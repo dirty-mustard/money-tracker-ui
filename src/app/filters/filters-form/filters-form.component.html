@@ -1,15 +1,4 @@
-<!-- general form elements disabled -->
-<div class="box box-warning" [class.collapsed-box]="collapsed">
-  <div class="box-header with-border">
-    <h3 class="box-title">Filter</h3>
-
-    <div class="box-tools pull-right">
-      <button type="button" class="btn btn-box-tool" data-widget="collapse">
-        <i class="fa" [class.fa-plus]="collapsed" [class.fa-minus]="!collapsed"></i>
-      </button>
-    </div>
-  </div>
-  <!-- /.box-header -->
+<div class="collapse" id="mt-filters-form-wrapper" [class.in]="!collapsed">
   <form role="form" (ngSubmit)="onSubmit()" #filterForm="ngForm">
     <div class="box-body">
 
@@ -17,7 +6,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4><i class="icon fa fa-ban"></i> {{ errorMessage }}</h4>
       </div>
-      <!-- text input -->
 
       <div class="row">
         <div class="col-sm-12">

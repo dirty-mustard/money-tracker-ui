@@ -12,10 +12,18 @@ export class FilterListComponent {
   @Input('filters') filters: Filter[] = [];
   @Output('onFilterSelected') onFilterSelectedEvent = new EventEmitter<number>();
   @Output('newOnClick') newOnClickEvent = new EventEmitter();
+  @Output('toggleFilterDetailsOnClick') toggleFilterDetailsOnClick = new EventEmitter();
+
+  showDetailsStatus: boolean = true;
   errorMessage: any = null;
 
   onFilterSelected(filterId: number) {
     this.onFilterSelectedEvent.emit(filterId);
+  }
+
+  toggleFilterDetails() {
+    this.showDetailsStatus = !this.showDetailsStatus;
+    this.toggleFilterDetailsOnClick.emit();
   }
 
   newFilterOnClick() {

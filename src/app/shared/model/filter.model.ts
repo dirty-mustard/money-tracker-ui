@@ -32,7 +32,7 @@ export class Filter {
     return filter;
   }
 
-  public hasOption(option: string) {
+  public hasOption(option: string) : boolean {
     return _.contains(this.options, option);
   }
 
