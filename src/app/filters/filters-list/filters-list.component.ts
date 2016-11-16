@@ -1,5 +1,7 @@
-import { OnInit, Component, Input, Output, EventEmitter } from "@angular/core";
-import { Filter } from "../../shared/model";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Filter } from "../../shared/models";
+
+declare var _ : any;
 
 @Component({
   selector: 'mt-filter-list',
@@ -14,7 +16,6 @@ export class FilterListComponent {
   @Output('newOnClick') newOnClickEvent = new EventEmitter();
   @Output('toggleFilterDetailsOnClick') toggleFilterDetailsOnClick = new EventEmitter();
 
-  showDetailsStatus: boolean = true;
   errorMessage: any = null;
 
   onFilterSelected(filterId: number) {
@@ -22,7 +23,6 @@ export class FilterListComponent {
   }
 
   toggleFilterDetails() {
-    this.showDetailsStatus = !this.showDetailsStatus;
     this.toggleFilterDetailsOnClick.emit();
   }
 

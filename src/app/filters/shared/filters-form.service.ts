@@ -2,15 +2,15 @@ import { Injectable } from "@angular/core";
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { FilterService, TagService } from "../../shared/service";
-import { Filter, Tag } from '../../shared/model';
+import { Filter, Tag } from '../../shared/models';
+import { FiltersService, TagsService } from "../../shared/services";
 
 declare var _ : any;
 
 @Injectable()
-export class FilterFormService {
+export class FiltersFormService {
 
-  constructor(private filterService: FilterService, private tagService: TagService) {}
+  constructor(private filterService: FiltersService, private tagService: TagsService) {}
 
   public get(id: number): Observable<Filter> {
     return this.filterService.get(id)

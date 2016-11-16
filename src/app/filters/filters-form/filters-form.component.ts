@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Filter } from "../../shared/model";
 
-import { Tag, ARCHIVED, LOCKED, UNTAGGED } from "../../shared/model";
+import { Tag, ARCHIVED, LOCKED, UNTAGGED } from "../../shared/models";
+import { Filter } from "../../shared/models";
 
 declare var _ : any;
 

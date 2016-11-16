@@ -12,14 +12,13 @@ import { ControlsComponent } from './controls';
 import { FiltersComponent } from "./filters/filters";
 import { FilterFormComponent } from "./filters/filters-form";
 import { FilterListComponent } from "./filters/filters-list";
-import { FilterService, TagService } from "./shared/service";
+import { FiltersService, TagsService } from "./shared/services";
 import { HomeComponent } from "./home";
 import { AppComponent } from "./app.component";
-import { FilterFormService } from "./filters/shared";
-import { ReportFormService } from "./reports/shared";
-import { ReportFormComponent } from "./reports/report-form";
-import { ReportService } from "./shared/service/report.service";
-import { ReportResolver } from "./shared/resolver";
+import { FiltersFormService } from "./filters/shared";
+import { ReportsFormComponent } from "./reports/reports-form";
+import { ReportsService } from "./shared/services/reports.service";
+import { ReportsResolver } from "./shared/resolvers";
 
 @NgModule({
   declarations: [
@@ -37,7 +36,7 @@ import { ReportResolver } from "./shared/resolver";
     FiltersComponent,
 
     // Reports
-    ReportFormComponent
+    ReportsFormComponent
   ],
   imports: [
     BrowserModule,
@@ -51,16 +50,15 @@ import { ReportResolver } from "./shared/resolver";
     FormBuilder,
 
     // Filters
-    FilterService,
+    FiltersService,
 
-    FilterFormService ,
+    FiltersFormService ,
     // Reports
-    ReportService,
-    ReportResolver,
+    ReportsService,
+    ReportsResolver,
 
-    ReportFormService,
     // Tags
-    TagService,
+    TagsService,
   ],
   bootstrap: [ AppComponent ]
 })

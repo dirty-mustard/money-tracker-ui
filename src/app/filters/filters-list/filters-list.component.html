@@ -5,12 +5,12 @@
       <div class="input-group">
         <div class="input-group-btn">
           <button type="button" class="btn btn-primary btn-flat" (click)="toggleFilterDetails()">
-            {{ showDetailsStatus ? 'Show details' : 'Hide details' }}
+            Show/Hide details
           </button>
         </div>
         <select class="form-control" (change)="onFilterSelected($event.target.value)">
-          <option *ngIf="selectedFilter.id == undefined" disabled selected>Select a filter</option>
-          <option *ngFor="let filter of filters" value="{{ filter.id }}" [selected]="filter.id == selectedFilter.id">
+          <option disabled [selected]="selectedFilter.id == undefined">Select a filter</option>
+          <option *ngFor="let filter of filters" value="{{ filter.id }}" [selected]="selectedFilter && filter.id == selectedFilter.id">
             {{ filter.name }}
           </option>
         </select>

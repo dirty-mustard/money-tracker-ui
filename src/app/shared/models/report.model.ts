@@ -1,5 +1,8 @@
 declare var _: any;
 
+export const PIE = 'PIE';
+export const LINE = 'LINE';
+
 export class Report {
 
     public id: number = undefined;

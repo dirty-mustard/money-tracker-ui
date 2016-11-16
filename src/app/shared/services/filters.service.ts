@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Filter, Error } from '../model';
+import { Filter, Error } from '../models';
 import { Observable } from 'rxjs/Rx';
 
 declare var _ : any;
 
 @Injectable()
-export class FilterService {
+export class FiltersService {
 
     constructor(private http: Http) {}
 

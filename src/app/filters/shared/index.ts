@@ -1,1 +1,1 @@
-export * from './filter-form.service';
+export * from './filters-form.service';

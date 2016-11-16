@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Report, Error } from '../model';
+import { Report, Error } from '../models';
 import { Observable } from 'rxjs/Rx';
 
 declare var _ : any;
 
 @Injectable()
-export class ReportService {
+export class ReportsService {
 
     constructor(private http: Http) {}
 

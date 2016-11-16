@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Tag, Error } from '../model';
+import { Tag, Error } from '../models';
 import { Observable } from 'rxjs/Rx';
 
 declare var _ : any;
 
 @Injectable()
-export class TagService {
+export class TagsService {
 
     constructor(private http: Http) {}
 

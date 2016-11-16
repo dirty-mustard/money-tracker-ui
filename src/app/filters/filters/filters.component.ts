@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { isUndefined } from "util";
 import { Error } from "../../shared";
-import { Filter } from "../../shared/model";
-import { FilterFormService } from "../shared";
-import { Tag } from "../../shared/model/tag.model";
+import { Filter, Tag } from "../../shared/models";
+import { FiltersFormService } from "../shared";
 
 declare var _ : any;
 
@@ -13,10 +12,12 @@ declare var _ : any;
   templateUrl: 'filters.component.html',
   styleUrls: ['filters.component.css']
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent implements OnInit, OnChanges {
 
   @Input('filterFormCollapsed') filterFormCollapsed: boolean = false;
   @Input('filterId') filterId: number;
+  @Output('filterOnChange') filterOnChange : EventEmitter<number> = new EventEmitter<number>();
+
   filter: Filter = new Filter();
   availableFilters: Filter[] = [];
   tags: Tag[] = [];
@@ -24,11 +25,21 @@ export class FiltersComponent implements OnInit {
   errorMessage: string;
   errors: Object = {};
 
-  constructor(private filterFormService: FilterFormService,
-              private route: ActivatedRoute) { }
+  constructor(private filterFormService: FiltersFormService) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (_.contains(_.keys(changes), 'filterId')) {
+
+      (!isUndefined(this.filterId))
+          ? this._loadFilter(this.filterId)
+          : this.filter = new Filter();
+    }
+  }
 
   ngOnInit(): void {
-    this._loadFilter(this.filterId);
+    if (!isUndefined(this.filterId)) {
+      this._loadFilter(this.filterId);
+    }
     this._loadFilters();
     this._loadTags();
   }
@@ -43,6 +54,7 @@ export class FiltersComponent implements OnInit {
   }
 
   public onFilterSelected(filterId: number) {
+    this.filterOnChange.emit(filterId);
     this._loadFilter(filterId);
   }
 
