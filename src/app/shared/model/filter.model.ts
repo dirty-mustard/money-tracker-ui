@@ -31,6 +31,22 @@ export class Filter {
 
     return filter;
   }
+
+  public hasOption(option: string) {
+    return _.contains(this.options, option);
+  }
+
+  public addOption(option: string) {
+    if (!_.contains(this.options, option)) {
+      this.options.push(option);
+    }
+  }
+
+  public removeOption(option: string) {
+    if (_.contains(this.options, option)) {
+      this.options.splice(this.options.indexOf(option), 1)
+    }
+  }
 }
 
 export class FilterAmount {

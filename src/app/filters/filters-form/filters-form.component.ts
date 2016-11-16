@@ -46,6 +46,24 @@ export class FilterFormComponent implements OnChanges {
     this.filteredList = this.filteredList.slice(0, MAX_AMOUNT_SUGGESTED_TAGS);
   }
 
+  archivedTransactionsOnClick() {
+    (this.filter.hasOption(ARCHIVED))
+        ? this.filter.removeOption(ARCHIVED)
+        : this.filter.addOption(ARCHIVED);
+  }
+
+  untaggedTransactionsOnClick() {
+    (this.filter.hasOption(UNTAGGED))
+        ? this.filter.removeOption(UNTAGGED)
+        : this.filter.addOption(UNTAGGED);
+  }
+
+  lockedTransactionsOnClick() {
+    (this.filter.hasOption(LOCKED))
+        ? this.filter.removeOption(LOCKED)
+        : this.filter.addOption(LOCKED);
+  }
+
   select(item: Tag){
     this.query = "";
     this.selectedTags.push(item);
@@ -70,18 +88,6 @@ export class FilterFormComponent implements OnChanges {
 
   containsErrors() : boolean {
     return _.keys(this.errors).length > 0;
-  }
-
-  hasArchivedOptionEnabled() {
-    return _.contains(this.filter.options, ARCHIVED);
-  }
-
-  hasLockedTransactionOptionEnabled() {
-    return _.contains(this.filter.options, LOCKED);
-  }
-
-  hasUntaggedTransactionOptionEnabled() {
-    return _.contains(this.filter.options, UNTAGGED);
   }
 
   hasError(field: string) {
