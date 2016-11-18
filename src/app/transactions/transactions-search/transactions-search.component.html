@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Search for transactions</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+                <div class="box-body">
+                    <mt-filters-form [filter]="filter" [errors]="errors" [errorMessage]="errorMessage" [availableTags]="tags"
+                                     [selectedTags]="filter.tags" [collapsed]="true" [editingMode]="false"></mt-filters-form>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" (click)="OnSubmit()">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Results</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+                <div class="box-body">
+                    <mt-transactions-list [transactions]="transactions"></mt-transactions-list>
+                </div>
+                <!-- /.box-body -->
+            </form>
+        </div>
+    </div>
+</div>

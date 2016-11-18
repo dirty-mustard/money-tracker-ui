@@ -7,7 +7,7 @@
         <th>Description</th>
         <th>Tags</th>
       </tr>
-      <tr *ngFor="let transaction of transactions | async">
+      <tr *ngFor="let transaction of transactions">
         <td>{{ transaction.date | mtDate }}</td>
         <td>&euro; {{ transaction.amount | mtCurrency }}</td>
         <td>{{ transaction.description | mtText: 100 }}</td>

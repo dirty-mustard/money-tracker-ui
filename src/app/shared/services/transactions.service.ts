@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { Filter } from '../model/filter.model';
-import { Transaction } from '../model/transaction.model';
+
+import { Transaction, Filter } from '../models';
 
 @Injectable()
 export class TransactionsService {

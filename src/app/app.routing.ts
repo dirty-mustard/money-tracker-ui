@@ -5,9 +5,10 @@ import { FiltersComponent } from "./filters/filters";
 import { HomeComponent } from "./home";
 import { ReportsFormComponent } from "./reports/reports-form";
 import { ReportsResolver } from "./shared/resolvers/reports.resolver";
+import { TransactionsSearchComponent } from "./transactions/transactions-search";
 
 export const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: TransactionsSearchComponent },
   { path: 'filters', component: FiltersComponent },
   {
     path: 'reports/:id',
@@ -15,6 +16,10 @@ export const appRoutes: Routes = [
     resolve: {
       report: ReportsResolver
     }
+  },
+  {
+    path: 'transactions/search',
+    component: TransactionsSearchComponent,
   }
 ];
 

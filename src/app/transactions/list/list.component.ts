@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { TransactionsService } from '../../services/transactions.service';
-import { Filter } from '../../model/filter.model';
-import { Transaction } from '../../model/transaction.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { Transaction } from '../../shared/models/transaction.model';
 
 @Component({
   selector: 'mt-transactions-list',
@@ -11,18 +8,8 @@ import { Transaction } from '../../model/transaction.model';
 })
 export class TransactionsListComponent implements OnInit {
 
-  transactions: Observable<Transaction[]>;
+  @Input('transactions') transactions: Transaction[];
 
-  constructor(private transactionsService: TransactionsService) { }
-
-  ngOnInit() {
-    let filter = new Filter();
-    filter.from = '2016-01-01';
-    filter.to = '2016-07-01';
-    // filter.description = 'suma';
-    // filter.tags = [1];
-
-    this.transactions = this.transactionsService.search(filter);
-  }
+  ngOnInit() { }
 
 }

@@ -5,8 +5,8 @@
                     (toggleFilterDetailsOnClick)="toggleFilterDetailsOnClick($event)"></mt-filter-list>
   </div>
   <div class="col-md-12">
-    <mt-filter-form [errors]="errors" [errorMessage]="errorMessage" [filter]="filter" [availableTags]="tags"
-                    (deleteOnClick)="deleteOnClick($event)" (saveOnClick)="saveOnClick($event)"
-                    [selectedTags]="filter.tags" [collapsed]="filterFormCollapsed"></mt-filter-form>
+    <mt-filters-form [editingMode]="true" [errors]="errors" [errorMessage]="errorMessage" [filter]="filter"
+                     [availableTags]="tags" (deleteOnClick)="deleteOnClick($event)" (saveOnClick)="saveOnClick($event)"
+                     [selectedTags]="filter.tags" [collapsed]="filterFormCollapsed"></mt-filters-form>
   </div>
 </div>

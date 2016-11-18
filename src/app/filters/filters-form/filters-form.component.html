@@ -1,5 +1,5 @@
 <div class="collapse" id="mt-filters-form-wrapper" [class.in]="collapsed">
-  <form role="form" (ngSubmit)="onSubmit()" #filterForm="ngForm">
+  <form role="form" #filterForm="ngForm">
     <div class="box-body">
 
       <div [hidden]="!containsErrors()" class="alert alert-danger alert-dismissible">
@@ -7,7 +7,7 @@
         <h4><i class="icon fa fa-ban"></i> {{ errorMessage }}</h4>
       </div>
 
-      <div class="row">
+      <div class="row" *ngIf="editingMode">
         <div class="col-sm-12">
           <div class="form-group" [class.has-error]="hasError('name')">
             <label>Name</label>
@@ -161,7 +161,7 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-xs-12">
             <div id="mt-filter-archived-transactions" class="checkbox checkbox-primary">
               <ul class="list-group">
                 <li class="list-group-item">
@@ -170,15 +170,10 @@
                   <label for="mt-filter-archived-transactions-checkbox">
                     Filter by archived transactions
                   </label>
-                  <span id="helpBlock" class="help-block">
-                    When selecting this checkbox, only archived transactions will been showed.
-                  </span>
                 </li>
               </ul>
             </div>
-          </div>
 
-          <div class="col-xs-4">
             <div id="mt-filter-locked-transactions" class="checkbox checkbox-primary">
               <ul class="list-group">
                 <li class="list-group-item">
@@ -187,15 +182,10 @@
                   <label for="mt-filter-locked-transactions-checkbox">
                     Filter by locked transactions
                   </label>
-                  <span class="help-block">
-                    When selecting this checkbox, only locked transactions will been showed.
-                  </span>
                 </li>
               </ul>
             </div>
-          </div>
 
-          <div class="col-xs-4">
             <div id="mt-filter-untagged-transactions" class="checkbox checkbox-primary">
               <ul class="list-group">
                 <li class="list-group-item">
@@ -204,9 +194,6 @@
                   <label for="mt-filter-untagged-transactions-checkbox">
                     Filter by locked transactions
                   </label>
-                  <span class="help-block">
-                    When selecting this checkbox, only transactions without any tag will been showed.
-                  </span>
                 </li>
               </ul>
             </div>
@@ -214,12 +201,12 @@
         </div>
       </div>
 
-      <div class="box-footer">
+      <div class="box-footer" *ngIf="editingMode">
         <button type="button" *ngIf="filter.id" (click)="deleteOnClick()" class="btn btn-default pull-left">Delete</button>
-        <button type="submit" *ngIf="!filter.id" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
+        <button type="submit" *ngIf="!filter.id" (click)="onCreate()" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
           Create filter
         </button>
-        <button type="submit" *ngIf="filter.id" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
+        <button type="submit" *ngIf="filter.id" (click)="onUpdate()" class="btn btn-primary pull-right" [disabled]="!filterForm.form.valid">
           Update filter
         </button>
       </div>

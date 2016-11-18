@@ -23,8 +23,10 @@ import { HomeComponent } from "./home";
 import { ReportsFormComponent } from "./reports/reports-form";
 import { ReportsService } from "./shared/services/reports.service";
 import { ReportsResolver } from "./shared/resolvers";
+import { TransactionsSearchComponent } from "./transactions/transactions-search";
+import { TransactionsSearchFormService } from "./transactions/shared";
 
-import { TransactionsService } from './services/transactions.service';
+import { TransactionsService } from './shared/services/transactions.service';
 import { TransactionsListComponent } from './transactions/list';
 
 import { MtCurrencyPipe } from './shared/pipes/mt-currency.pipe';
@@ -40,6 +42,9 @@ import { MtTextPipe } from './shared/pipes/mt-text.pipe';
     FooterComponent,
     ControlsComponent,
     HomeComponent,
+
+    // Transactions
+    TransactionsSearchComponent,
 
     // Filters
     FilterFormComponent,
@@ -65,6 +70,9 @@ import { MtTextPipe } from './shared/pipes/mt-text.pipe';
   providers: [
     appRoutingProviders,
     FormBuilder,
+
+    // Transactions
+    TransactionsSearchFormService,
 
     // Filters
     FiltersService,
