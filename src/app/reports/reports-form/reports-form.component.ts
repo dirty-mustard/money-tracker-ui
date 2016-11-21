@@ -23,7 +23,11 @@ export class ReportsFormComponent implements OnInit {
   constructor(private reportService: ReportsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.report = this.route.snapshot.data['report'];
+    this.route.params.subscribe((params: any) => {
+      if (_.contains(_.keys(params),'id')) {
+        this.reportService.get(params['id']).subscribe((r: Report) => this.report = r);
+      }
+    });
   }
 
   onSubmit() {

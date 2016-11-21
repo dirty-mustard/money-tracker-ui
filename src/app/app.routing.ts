@@ -13,6 +13,10 @@ export const appRoutes: Routes = [
     path: 'reports',
     children: [
       {
+        path: 'new',
+        component: ReportsFormComponent
+      },
+      {
         path: ':id',
         children: [
           {
