@@ -12,7 +12,7 @@ const MAX_AMOUNT_SUGGESTED_TAGS = 10;
   templateUrl: 'filters-form.component.html',
   styleUrls: ['filters-form.component.css']
 })
-export class FilterFormComponent implements OnChanges {
+export class FiltersFormComponent implements OnChanges {
 
   @Input('collapsed') collapsed: boolean = false;
   @Input('filter') filter: Filter = new Filter();

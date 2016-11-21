@@ -8,7 +8,7 @@ declare var _ : any;
   templateUrl: 'filters-list.component.html',
   styleUrls: ['filters-list.component.css']
 })
-export class FilterListComponent {
+export class FiltersListComponent {
 
   @Input('selectedFilter') selectedFilter: Filter = new Filter();
   @Input('filters') filters: Filter[] = [];

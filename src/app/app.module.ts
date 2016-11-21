@@ -10,8 +10,8 @@ import { ContentComponent } from './content';
 import { FooterComponent } from './footer';
 import { ControlsComponent } from './controls';
 import { FiltersComponent } from "./filters/filters";
-import { FilterFormComponent } from "./filters/filters-form";
-import { FilterListComponent } from "./filters/filters-list";
+import { FiltersFormComponent } from "./filters/filters-form";
+import { FiltersListComponent } from "./filters/filters-list";
 import { FiltersService, TagsService } from "./shared/services";
 import { HomeComponent } from "./home";
 import { AppComponent } from "./app.component";
@@ -31,8 +31,8 @@ import { ReportsResolver } from "./shared/resolvers";
     HomeComponent,
 
     // Filters
-    FilterFormComponent,
-    FilterListComponent,
+    FiltersFormComponent,
+    FiltersListComponent,
     FiltersComponent,
 
     // Reports
