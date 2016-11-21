@@ -8,7 +8,7 @@ import { Transaction } from '../../shared/models/transaction.model';
 })
 export class TransactionsListComponent implements OnInit {
 
-  @Input('transactions') transactions: Transaction[];
+  @Input('transactions') transactions: Transaction[] = [];
 
   ngOnInit() { }
 

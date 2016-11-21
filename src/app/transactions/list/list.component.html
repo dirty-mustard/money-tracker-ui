@@ -7,17 +7,21 @@
         <th>Description</th>
         <th>Tags</th>
       </tr>
+      <tr [hidden]="transactions?.length > 0">
+        <td colspan="4" class="text-center">
+          <b>No transactions found.</b>
+          <small>Use the filter on the right side to search for transactions.</small>
+        </td>
+      </tr>
       <tr *ngFor="let transaction of transactions">
         <td>{{ transaction.date | mtDate }}</td>
         <td>&euro; {{ transaction.amount | mtCurrency }}</td>
         <td>{{ transaction.description | mtText: 100 }}</td>
         <td>
-          <template ngFor let-tag [ngForOf]="transaction.tags">
-            <span class="label label-default"
+          <span class="label label-default" *ngFor="let tag of transaction.tags"
                   [ngStyle]="{backgroundColor: tag.color, color: '#fff'}">
-              <i class="fa fa-tag"></i> {{ tag.name }}</span>
-            <br>
-          </template>
+              <i class="fa fa-tag"></i> {{ tag.name }}
+          </span>
         </td>
       </tr>
     </tbody>

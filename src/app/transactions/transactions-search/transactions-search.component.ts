@@ -13,7 +13,7 @@ declare var _ : any;
 export class TransactionsSearchComponent implements OnInit {
 
     filter: Filter = new Filter();
-    transactions: Transaction[];
+    transactions: Transaction[] = [];
     tags: Tag[] = [];
 
     errorMessage: string;
