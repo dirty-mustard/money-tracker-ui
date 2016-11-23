@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 
 import { PIE, LINE, Filter, Report } from "../../shared/models";
 import { ReportsService } from "../../shared/services/reports.service";
+import { SidebarService } from "../../shared/services/sidebar.service";
+import { Response } from "@angular/http";
 
 declare var _ : any;
 
@@ -20,7 +22,9 @@ export class ReportsFormComponent implements OnInit {
   @Output('saveOnClick') saveEvent = new EventEmitter<Report>();
   @Output('deleteOnClick') deleteEvent = new EventEmitter<Report>();
 
-  constructor(private reportService: ReportsService, private route: ActivatedRoute) {}
+  constructor(private sidebarService: SidebarService,
+              private reportService: ReportsService,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
@@ -33,8 +37,13 @@ export class ReportsFormComponent implements OnInit {
   onSubmit() {
     this.saveEvent.emit(this.report);
     (this.report.id)
-      ? this.reportService.update(this.report).subscribe((r: Report) => this.report = r)
-      : this.reportService.create(this.report).subscribe((r: Report) => this.report = r);
+      ? this.reportService.update(this.report).subscribe(this.submitOnSuccess.bind(this))
+      : this.reportService.create(this.report).subscribe(this.submitOnSuccess.bind(this));
+  }
+
+  submitOnSuccess(r: Report) {
+    this.report = r;
+    this.sidebarService.loadReports();
   }
 
   filterOnChange(filterId: number) {
@@ -43,6 +52,7 @@ export class ReportsFormComponent implements OnInit {
 
   deleteOnClick() {
     this.deleteEvent.emit(this.report);
+    this.reportService.delete(this.report).subscribe((r: Response) => this.submitOnSuccess(new Report()));
   }
 
   pieChartOnClick() {

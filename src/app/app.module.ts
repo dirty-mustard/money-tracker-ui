@@ -29,6 +29,8 @@ import { TransactionsSearchFormService } from "./transactions/shared";
 import { TransactionsService } from './shared/services/transactions.service';
 import { TransactionsListComponent } from './transactions/list';
 
+import { SidebarService } from "./shared/services/sidebar.service";
+
 import { MtCurrencyPipe } from './shared/pipes/mt-currency.pipe';
 import { MtDatePipe } from './shared/pipes/mt-date.pipe';
 import { MtTextPipe } from './shared/pipes/mt-text.pipe';
@@ -86,7 +88,10 @@ import { MtTextPipe } from './shared/pipes/mt-text.pipe';
     TagsService,
 
     // Transactions
-    TransactionsService
+    TransactionsService,
+
+    // Sidebar
+    SidebarService
   ],
   bootstrap: [ AppComponent ]
 })
