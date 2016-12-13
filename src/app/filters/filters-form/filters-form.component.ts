@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
 import { Tag, ARCHIVED, LOCKED, UNTAGGED } from "../../shared/models";
 import { Filter } from "../../shared/models";
