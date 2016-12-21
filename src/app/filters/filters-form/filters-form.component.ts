@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
 import { Tag, ARCHIVED, LOCKED, UNTAGGED } from "../../shared/models";
 import { Filter } from "../../shared/models";
@@ -8,12 +8,13 @@ declare var _ : any;
 const MAX_AMOUNT_SUGGESTED_TAGS = 10;
 
 @Component({
-  selector: 'mt-filter-form',
+  selector: 'mt-filters-form',
   templateUrl: 'filters-form.component.html',
   styleUrls: ['filters-form.component.css']
 })
 export class FiltersFormComponent implements OnChanges {
 
+  @Input('editingMode') editingMode: boolean = false;
   @Input('collapsed') collapsed: boolean = false;
   @Input('filter') filter: Filter = new Filter();
   @Input('availableTags') availableTags: Tag[] = [];
@@ -77,7 +78,12 @@ export class FiltersFormComponent implements OnChanges {
     }
   }
 
-  onSubmit() {
+  onUpdate() {
+    this.filter.tags = this.selectedTags;
+    this.saveEvent.emit(this.filter);
+  }
+
+  onCreate() {
     this.filter.tags = this.selectedTags;
     this.saveEvent.emit(this.filter);
   }

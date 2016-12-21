@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ReportsService } from "../shared/services";
+import { Report } from "../shared/models";
+import { SidebarService } from "../shared/services/sidebar.service";
+
 @Component({
   selector: 'mt-sidebar',
   templateUrl: 'sidebar.component.html',
@@ -7,8 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  reports: Report[] = [];
 
-  ngOnInit() { }
+  constructor(private sidebarService: SidebarService, private reportsService: ReportsService) { }
+
+  ngOnInit() {
+    this.sidebarService.loadReports();
+    this.sidebarService.reportAdded$.subscribe((r: Report[]) => this.reports = r);
+  }
 
 }

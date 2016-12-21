@@ -1,0 +1,30 @@
+<div class="box-body table-responsive no-padding">
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Tags</th>
+      </tr>
+      <tr [hidden]="transactions?.length > 0">
+        <td colspan="4" class="text-center">
+          <b>No transactions found.</b>
+          <small>Use the filter on the right side to search for transactions.</small>
+        </td>
+      </tr>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.date | mtDate }}</td>
+        <td>&euro; {{ transaction.amount | mtCurrency }}</td>
+        <td>{{ transaction.description | mtText: 100 }}</td>
+        <td>
+          <span class="label label-default" *ngFor="let tag of transaction.tags"
+                  [ngStyle]="{backgroundColor: tag.color, color: '#fff'}">
+              <i class="fa fa-tag"></i> {{ tag.name }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- /.box-body -->

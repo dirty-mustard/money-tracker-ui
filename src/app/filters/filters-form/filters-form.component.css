@@ -1,4 +1,4 @@
-.selected{
+.selected {
     border:solid #4CAF50 1px;
     float:left;
     margin:2px;
@@ -24,10 +24,18 @@
     text-transform: capitalize;
 }
 
+.mt-filter-form-selected-tag i {
+    cursor: pointer;
+}
 .mt-filter-form-selected-tag {
     margin-right: 5px;
     font-weight: 400;
     color: #fff;
+}
+
+#mt-filters-form-wrapper .list-group-item {
+    border: 0;
+    padding: 10px;
 }
 
 ul#mt-filter-form-tag-autocompletion {
@@ -48,14 +56,6 @@ ul#mt-filter-form-tag-autocompletion li {
 ul#mt-filter-form-tag-autocompletion li:hover {
     color: #fff;
     background-color: #55B5DB;
-}
-
-#mt-filter-archived-transactions {
-  margin-left: 15px;
-}
-
-#mt-filter-untagged-transactions {
-  margin-right: 15px;
 }
 
 .checkbox label {

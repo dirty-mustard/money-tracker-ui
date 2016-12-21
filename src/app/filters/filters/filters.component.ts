@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
 import { isUndefined } from "util";
 import { Error } from "../../shared";
-import { Filter, Tag } from "../../shared/models";
+import { Filter, Tag, FilterAmount } from "../../shared/models";
 import { FiltersFormService } from "../shared";
 
 declare var _ : any;
@@ -92,6 +91,9 @@ export class FiltersComponent implements OnInit, OnChanges {
   private _loadFilter(filterId: number) {
     this.filterFormService.get(filterId).subscribe((f: Filter) => {
       this.filter = f;
+      if (_.isNull(this.filter.amount)) {
+        this.filter.amount = new FilterAmount();
+      }
     });
   }
 
