@@ -4,7 +4,7 @@
 /dist
 /tmp
 /src/assets/css
-
+/public/
 # dependencies
 /node_modules
 /bower_components
