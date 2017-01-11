@@ -29,6 +29,8 @@ import { TransactionsSearchFormService } from "./transactions/shared";
 import { TransactionsService } from './shared/services/transactions.service';
 import { TransactionsListComponent } from './transactions/list';
 
+import { TagsListComponent } from "./tags/tags-list";
+
 import { SidebarService } from "./shared/services/sidebar.service";
 
 import { MtCurrencyPipe } from './shared/pipes/mt-currency.pipe';
@@ -58,6 +60,10 @@ import { MtTextPipe } from './shared/pipes/mt-text.pipe';
 
     // Transactions
     TransactionsListComponent,
+
+    // Tags
+    TagsListComponent,
+
     MtCurrencyPipe,
     MtDatePipe,
     MtTextPipe
