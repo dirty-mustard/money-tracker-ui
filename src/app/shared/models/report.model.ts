@@ -8,6 +8,7 @@ export class Report {
     public id: number = undefined;
     public createdAt: string = undefined;
     public name: string = undefined;
+    public icon: string = undefined;
     public filter = undefined;
     public charts: string[] = [];
 
