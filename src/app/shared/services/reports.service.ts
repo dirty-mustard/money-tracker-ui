@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Report, Error } from '../models';
 import { Observable } from 'rxjs/Rx';
+import { Transaction, PieChart } from "../models";
 
 declare var _ : any;
 
@@ -51,6 +52,18 @@ export class ReportsService {
         .map((r: Response) => Report.fromJson(r.json()))
         .catch(this.errorHandler);
     }
+
+    public getReportTransactions(reportId): Observable<Transaction[]> {
+      return this.http.get(`http://localhost:8080/api/reports/${reportId}/transactions`)
+        .map((response: Response) => response.json() as Transaction[])
+        .catch(this.errorHandler);
+    }
+
+  public getReportPieData(reportId): Observable<PieChart[]> {
+    return this.http.get(`http://localhost:8080/api/reports/${reportId}/pieChart`)
+      .map((response: Response) => response.json() as PieChart[])
+      .catch(this.errorHandler);
+  }
 
     public errorHandler(error: any) {
       return Observable.throw(Error.fromJson(error.json()) || 'Server error');

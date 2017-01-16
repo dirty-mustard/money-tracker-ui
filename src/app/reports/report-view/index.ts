@@ -1,1 +1,1 @@
-export * from './reports-form.component';
+export * from './report-view.component';

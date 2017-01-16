@@ -38,6 +38,9 @@ import { MtDatePipe } from './shared/pipes/mt-date.pipe';
 import { MtTextPipe } from './shared/pipes/mt-text.pipe';
 
 import { FileSelectDirective } from "ng2-file-upload";
+import { ReportViewComponent } from './reports/report-view';
+
+import { BaseChartDirective } from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -70,7 +73,11 @@ import { FileSelectDirective } from "ng2-file-upload";
     MtDatePipe,
     MtTextPipe,
 
-    FileSelectDirective
+    BaseChartDirective,
+
+    FileSelectDirective,
+
+    ReportViewComponent,
   ],
   imports: [
     BrowserModule,
