@@ -1,30 +1,55 @@
-<div class="box-body table-responsive no-padding">
-  <table class="table table-hover">
-    <tbody>
-      <tr>
-        <th>Date</th>
-        <th>Amount</th>
-        <th>Description</th>
-        <th>Tags</th>
-      </tr>
-      <tr [hidden]="transactions?.length > 0">
-        <td colspan="4" class="text-center">
-          <b>No transactions found.</b>
-          <small>Use the filter on the right side to search for transactions.</small>
-        </td>
-      </tr>
-      <tr *ngFor="let transaction of transactions">
-        <td>{{ transaction.date | mtDate }}</td>
-        <td>&euro; {{ transaction.amount | mtCurrency }}</td>
-        <td>{{ transaction.description | mtText: 100 }}</td>
-        <td>
-          <span class="label label-default" *ngFor="let tag of transaction.tags"
-                  [ngStyle]="{backgroundColor: tag.color, color: '#fff'}">
-              <i class="fa fa-tag"></i> {{ tag.name }}
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-12">
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#transactions" data-toggle="tab">Transactions</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="transactions">
+          <ul class="timeline timeline-inverse">
+
+            <template ngIf [ngIf]="transactions?.length <= 0">
+              <li>
+                <i class="fa fa-question-circle-o bg-gray"></i>
+                <div class="timeline-item">
+                  <h3 class="timeline-header">No transactions found for this criteria.</h3>
+                  <div class="timeline-body">Maybe if you change your criteria you'll find what you seek.</div>
+                </div>
+              </li>
+            </template>
+
+            <template ngFor let-transactionGroup [ngForOf]="transactionsGroupedByDate()">
+              <li class="time-label">
+                <span>{{ transactionGroup.key }}</span>
+              </li>
+              <template ngFor let-transaction [ngForOf]="transactionGroup.values">
+                <li>
+                  <i *ngIf="transaction.amount < 0" class="fa fa-minus-circle"></i>
+                  <i *ngIf="transaction.amount > 0" class="fa fa-plus-circle"></i>
+
+                  <div class="timeline-item">
+                    <span class="time">
+                      <i class="fa fa-euro"></i> {{ transaction.amount }}
+                    </span>
+                    <h3 class="timeline-header">
+                      <span class="label label-tag" *ngFor="let tag of transaction.tags"
+                            [ngStyle]="{'border': '1px solid #e7eaec;'}">
+                        <i class="fa fa-circle-thin" aria-hidden="true"
+                           [ngStyle]="{'color': tag.color}"></i> {{ tag.name }}
+                      </span>
+                    </h3>
+                    <div class="timeline-body">{{ transaction.description }}</div>
+                    <div class="timeline-footer">
+                      <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit</a>
+                    </div>
+                  </div>
+                </li>
+              </template>
+            </template>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- /.box-body -->

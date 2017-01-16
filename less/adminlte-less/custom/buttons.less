@@ -1,39 +1,5 @@
-.btn {
-  .border-radius(@btn-border-radius);
-  .box-shadow(@btn-boxshadow);
-
-  border: 1px solid @btn-border-color;
-  background-color: #fafafa;
-  #gradient .vertical-inverse(#f2f4f5, #fcfcfc);
-}
-
-.btn-primary {
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
-  background-color: #1a9fff;
-  #gradient > .vertical-inverse(rgba(0, 0, 0, 0.01), rgba(255, 255, 255, 0.01), 0%, 100%);
-  border: 1px solid #008df2;
-
-  border-color: darken(@light-blue, 5%);
-  &:hover, &:active, &.hover {
-    background-color: #0070bf;
-    color: #ffffff;
-    #gradient > .vertical(rgba(0, 0, 0, 0.01), rgba(255, 255, 255, 0.01), 0%, 100%);
-  }
-}
-
-.btn-dark {
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
-  background-color: @navbar-color;
-  border: 1px solid @navbar-color;
-  background-image: none;
-
-  border-color: darken(@navbar-color, 5%);
-  &:hover, &:active, &.hover {
-    background-color: darken(@navbar-color, 5%);
-    color: #ffffff;
-  }
+.btn-white {
+  color: inherit;
+  background: #fff;
+  border: 1px solid @gray;
 }

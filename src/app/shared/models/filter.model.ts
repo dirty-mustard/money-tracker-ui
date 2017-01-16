@@ -1,5 +1,3 @@
-import { Tag } from "./tag.model";
-
 declare var _: any;
 
 export class Filter {

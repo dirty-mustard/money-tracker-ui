@@ -13,23 +13,20 @@
 
       <li class="header">
         REPORTS
-        <span class="pull-right-container">
-          <a [routerLink]="['/reports', 'new']" class="pull-right">
-            <i class="fa fa-plus-circle text-info" aria-hidden="true"></i>
-          </a>
-        </span>
+      </li>
+      <li>
+        <a [routerLink]="['/reports', 'new']">
+          <i class="fa fa-plus-circle text-info" aria-hidden="true"></i>
+          <span>Add new report</span>
+        </a>
       </li>
       <li [hidden]="reports?.length > 0"><a>No reports found</a></li>
-        <li *ngFor="let report of reports">
-          <a>
-            <i *ngIf="report.icon" class="fa" [ngClass]="report?.icon" aria-hidden="true"></i>
-            <span>
-              {{ report.name }}
-              <a [routerLink]="['/reports', report.id, 'configure']" class="pull-right">
-              </a>
-            </span>
-          </a>
-        </li>
+      <li *ngFor="let report of reports">
+        <a [routerLink]="['/reports', report.id]">
+          <i *ngIf="report.icon" class="fa" [ngClass]="report?.icon" aria-hidden="true"></i>
+          <span>{{ report.name }}</span>
+        </a>
+      </li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>
