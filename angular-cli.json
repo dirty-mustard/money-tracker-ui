@@ -30,7 +30,8 @@
         "../node_modules/admin-lte/dist/js/app.min.js",
         "../node_modules/underscore/underscore-min.js",
         "../node_modules/moment/min/moment.min.js",
-        "../node_modules/numeral/min/numeral.min.js"
+        "../node_modules/numeral/min/numeral.min.js",
+        "../node_modules/randomcolor/randomColor.js"
       ],
       "environments": {
         "source": "environments/environment.ts",

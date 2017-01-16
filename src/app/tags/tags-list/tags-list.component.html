@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3 class="control-sidebar-heading">Create or edit tag</h3>
+    <ul class="control-sidebar-menu">
+      <li *ngFor="let tag of tags">
+        <a>
+          <i class="fa fa-circle-o" [style.margin]="'5px;'" [style.color]="tag.color"></i> <span>{{tag.name}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

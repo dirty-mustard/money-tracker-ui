@@ -33,6 +33,10 @@ import { SidebarService } from "./shared/services/sidebar.service";
 
 import { TransactionImporterComponent } from './transaction-importer';
 
+import { TagsComponent } from './tags/tags/tags.component';
+import { TagsListComponent } from './tags/tags-list/tags-list.component';
+import { TagsFormComponent } from './tags/tags-form/tags-form.component';
+
 import { MtCurrencyPipe } from './shared/pipes/mt-currency.pipe';
 import { MtDatePipe } from './shared/pipes/mt-date.pipe';
 import { MtTextPipe } from './shared/pipes/mt-text.pipe';
@@ -66,11 +70,16 @@ import { FileSelectDirective } from "ng2-file-upload";
     // CSV Importer
     TransactionImporterComponent,
 
+    // Tags
+    TagsComponent,
+    TagsListComponent,
+    TagsFormComponent,
+
     MtCurrencyPipe,
     MtDatePipe,
     MtTextPipe,
 
-    FileSelectDirective
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,
