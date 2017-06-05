@@ -13,19 +13,19 @@ export class FiltersFormService {
   constructor(private filterService: FiltersService, private tagService: TagsService) {}
 
   public get(id: number): Observable<Filter> {
-    return this.filterService.get(id)
+    let filter = this.filterService.get(id);
+    return filter
       .flatMap((filter: Filter) => {
         let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
-        return (tagIds.length > 0)
-          ? Observable.forkJoin(Observable.of(filter), this.tagService.getByList(tagIds))
-          : Observable.forkJoin(Observable.of(filter), Observable.of<Tag[]>([]));
-      }).map((filterDetails: Filter) => {
-        let filter: Filter = filterDetails[0];
-        if (!_.isUndefined(filterDetails[1])
-          && _.isArray(filterDetails[1])
-          && filterDetails[1].length > 0
+        return Observable.forkJoin(Observable.of(filter), (this.tagService.getByList(tagIds)));
+      })
+      .map((response: Array<any>) => {
+        let filter: Filter = response[0];
+        if (!_.isUndefined(response[1])
+          && _.isArray(response[1])
+          && response[1].length > 0
         ) {
-          filter.tags = filterDetails[1];
+          filter.tags = response[1];
         }
 
         return filter;
@@ -44,44 +44,42 @@ export class FiltersFormService {
     let f = filter;
     f.tags = f.tags.map((t: Tag) => { return t.id });
     return this.filterService.create(filter)
-        .flatMap((filter: Filter) => {
-          let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
-          return (tagIds.length > 0)
-              ? Observable.forkJoin(Observable.of(filter), this.tagService.getByList(tagIds))
-              : Observable.forkJoin(Observable.of(filter), Observable.of<Tag[]>([]));
-        }).map((filterDetails: Filter) => {
-          let filter: Filter = filterDetails[0];
-          if (!_.isUndefined(filterDetails[1])
-              && _.isArray(filterDetails[1])
-              && filterDetails[1].length > 0
-          ) {
-            filter.tags = filterDetails[1];
-          }
+      .flatMap((filter: Filter) => {
+        let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
+        return Observable.forkJoin(Observable.of(filter), (this.tagService.getByList(tagIds)));
+      })
+      .map((response: Array<any>) => {
+        let filter: Filter = response[0];
+        if (!_.isUndefined(response[1])
+          && _.isArray(response[1])
+          && response[1].length > 0
+        ) {
+          filter.tags = response[1];
+        }
 
-          return filter;
-        });
+        return filter;
+      });
   }
 
   public update(filter: Filter) : Observable<Filter> {
     let f = filter;
     f.tags = f.tags.map((t: Tag) => { return t.id });
     return this.filterService.update(f)
-        .flatMap((filter: Filter) => {
-          let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
-          return (tagIds.length > 0)
-              ? Observable.forkJoin(Observable.of(filter), this.tagService.getByList(tagIds))
-              : Observable.forkJoin(Observable.of(filter), Observable.of<Tag[]>([]));
-        }).map((filterDetails: Filter) => {
-          let filter: Filter = filterDetails[0];
-          if (!_.isUndefined(filterDetails[1])
-              && _.isArray(filterDetails[1])
-              && filterDetails[1].length > 0
-          ) {
-            filter.tags = filterDetails[1];
-          }
+      .flatMap((filter: Filter) => {
+        let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
+        return Observable.forkJoin(Observable.of(filter), (this.tagService.getByList(tagIds)));
+      })
+      .map((response: Array<any>) => {
+        let filter: Filter = response[0];
+        if (!_.isUndefined(response[1])
+          && _.isArray(response[1])
+          && response[1].length > 0
+        ) {
+          filter.tags = response[1];
+        }
 
-          return filter;
-        });
+        return filter;
+      });
   }
 
   public delete(filter: Filter) : Observable<Response> {
