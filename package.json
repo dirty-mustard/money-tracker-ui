@@ -24,6 +24,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "moment": "^2.18.1",
+    "ng2-file-upload": "^1.2.1",
     "numeral": "^2.0.6",
     "rxjs": "^5.1.0",
     "underscore": "^1.8.3",
@@ -35,6 +36,13 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
+    "grunt": "^1.0.1",
+    "grunt-bootlint": "^0.10.2",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-watch": "^1.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
@@ -46,13 +54,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "^2.3.4",
-    "grunt": "^1.0.1",
-    "grunt-bootlint": "^0.10.2",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-csslint": "^2.0.0",
-    "grunt-contrib-cssmin": "^2.2.0",
-    "grunt-contrib-less": "^1.4.1",
-    "grunt-contrib-watch": "^1.0.0"
+    "typescript": "^2.3.4"
   }
 }

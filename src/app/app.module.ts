@@ -31,9 +31,13 @@ import { TransactionsListComponent } from './transactions/list';
 
 import { SidebarService } from "./shared/services/sidebar.service";
 
+import { TransactionImporterComponent } from './transaction-importer';
+
 import { MtCurrencyPipe } from './shared/pipes/mt-currency.pipe';
 import { MtDatePipe } from './shared/pipes/mt-date.pipe';
 import { MtTextPipe } from './shared/pipes/mt-text.pipe';
+
+import { FileSelectDirective } from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -58,9 +62,15 @@ import { MtTextPipe } from './shared/pipes/mt-text.pipe';
 
     // Transactions
     TransactionsListComponent,
+
+    // CSV Importer
+    TransactionImporterComponent,
+
     MtCurrencyPipe,
     MtDatePipe,
-    MtTextPipe
+    MtTextPipe,
+
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
