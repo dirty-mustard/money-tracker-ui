@@ -24,7 +24,7 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-xs-12 col-sm-12 col-md-6">
           <div class="form-group" [class.has-error]="hasError('from')">
             <label>From</label>
             <div class="input-group">
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-xs-12 col-sm-12 col-md-6">
           <div class="form-group" [class.has-error]="hasError('to')">
             <label>To</label>
             <div class="input-group">
@@ -192,7 +192,7 @@
                   <input id="mt-filter-untagged-transactions-checkbox" type="checkbox"
                          [checked]="filter.hasOption('UNTAGGED')" (click)="untaggedTransactionsOnClick()">
                   <label for="mt-filter-untagged-transactions-checkbox">
-                    Filter by locked transactions
+                    Filter by transactions without a tag
                   </label>
                 </li>
               </ul>

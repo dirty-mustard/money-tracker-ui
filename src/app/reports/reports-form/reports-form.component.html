@@ -34,6 +34,23 @@
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group" [class.has-error]="hasError('icon')">
+                <label>Icon (<a target="_blank" href="http://fontawesome.io/icons/">examples</a>)</label>
+                  <input type="text" name="icon" class="form-control" placeholder="An example is fa-shopping-cart"
+                         [(ngModel)]="report.icon">
+                <span class="help-block col-xs-12 col-sm-12 col-md-6" *ngIf="report.icon && report?.icon.length > 0">
+                  Example of the icon: <i class="fa" [ngClass]="report.icon"></i>
+                </span>
+                <span class="help-block col-xs-12 col-sm-12 col-md-6 pull-right text-right">
+                  An example is <code>fa-shopping-cart</code>, so don't forget to add the <code>fa-</code> prefix
+                </span>
+                <span *ngIf="hasError('icon')" class="help-block">{{ getError('icon') }}</span>
+              </div>
+            </div>
+          </div>
+
           <hr />
 
           <h3>Filter settings</h3>
