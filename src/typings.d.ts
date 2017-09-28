@@ -4,7 +4,7 @@ declare var module: {
 };
 
 interface JQueryStatic {
-  notify(options: any, settings: any);
+  notify(options: any, settings: any): any;
 }
 
 declare let Chartist: any;
