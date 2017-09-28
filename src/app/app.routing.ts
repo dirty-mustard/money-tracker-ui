@@ -3,6 +3,7 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { FiltersComponent } from "./filters/filters";
 import { ReportsFormComponent } from "./reports/reports-form";
+import { ReportViewComponent } from "./reports/view";
 import { ReportsResolver } from "./shared/resolvers/reports.resolver";
 import { TransactionsSearchComponent } from "./transactions/transactions-search";
 
@@ -19,6 +20,10 @@ export const appRoutes: Routes = [
       {
         path: ':id',
         children: [
+          {
+            path: '',
+            component: ReportViewComponent
+          },
           {
             path: 'configure',
             component: ReportsFormComponent,

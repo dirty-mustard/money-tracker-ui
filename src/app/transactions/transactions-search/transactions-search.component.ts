@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Filter, Tag } from "../../shared/models";
-import { TransactionsSearchFormService } from "../shared";
+import { TransactionsSearchFormService } from '../shared';
 import { Transaction } from "../../shared/models/transaction.model";
 
 declare var _ : any;

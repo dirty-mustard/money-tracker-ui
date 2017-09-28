@@ -21,6 +21,7 @@ import { FiltersFormService } from "./filters/shared";
 
 import { HomeComponent } from "./home";
 import { ReportsFormComponent } from "./reports/reports-form";
+import { ReportViewComponent } from "./reports/view";
 import { ReportsService } from "./shared/services/reports.service";
 import { ReportsResolver } from "./shared/resolvers";
 import { TransactionsSearchComponent } from "./transactions/transactions-search";
@@ -59,6 +60,7 @@ import { FileSelectDirective } from "ng2-file-upload";
 
     // Reports
     ReportsFormComponent,
+    ReportViewComponent,
 
     // Transactions
     TransactionsListComponent,

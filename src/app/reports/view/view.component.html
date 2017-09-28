@@ -1,0 +1,26 @@
+<h3>
+  {{ report.name }}
+  <a [routerLink]="['/reports', report.id, 'configure']">
+    <i class="fa fa-cog" aria-hidden="true"></i>
+  </a>
+</h3>
+<br>
+<div class="row">
+  <div class="col-md-12">
+      <div class="box box-primary">
+          <div class="box-header with-border">
+              <h3 class="box-title">
+                  Transactions <span *ngIf="transactions.length > 0">({{ transactions.length }} records)</span>
+              </h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form role="form">
+              <div class="box-body">
+                  <mt-transactions-list [(transactions)]="transactions"></mt-transactions-list>
+              </div>
+              <!-- /.box-body -->
+          </form>
+      </div>
+  </div>
+</div>
