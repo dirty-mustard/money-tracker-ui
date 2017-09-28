@@ -1,0 +1,216 @@
+<div class="collapse" id="mt-rules-form-wrapper" [class.in]="collapsed">
+  <form role="form" #ruleForm="ngForm">
+    <div class="box-body">
+
+      <div [hidden]="!containsErrors()" class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> {{ errorMessage }}</h4>
+      </div>
+
+      <div class="row" *ngIf="editingMode">
+        <div class="col-sm-12">
+          <div class="form-group" [class.has-error]="hasError('name')">
+            <label>Name</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-file-text"></i>
+              </div>
+              <input type="text" name="name" class="form-control" placeholder="Enter name..."
+                     [(ngModel)]="rule.name">
+            </div>
+            <span *ngIf="hasError('name')" class="help-block">{{ getError('name') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group" [class.has-error]="hasError('from')">
+            <label>From</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" name="date_from" class="form-control" placeholder="Enter from date..." [(ngModel)]="filter.from">
+            </div>
+            <span *ngIf="hasError('from')" class="help-block">{{ getError('from') }}</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group" [class.has-error]="hasError('to')">
+            <label>To</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" name="date_to" class="form-control" placeholder="Enter to date..."
+                     [(ngModel)]="filter.to">
+            </div>
+            <span *ngIf="hasError('to')" class="help-block">{{ getError('to') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group" [class.has-error]="hasError('description')">
+            <label>Description</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-comment-o"></i>
+              </div>
+              <input type="text" name="description" class="form-control" placeholder="Enter description..."
+                     [(ngModel)]="rule.description">
+            </div>
+            <span *ngIf="hasError('description')" class="help-block">{{ getError('description') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group" [class.has-error]="hasError('accountHolder')">
+            <label>Account holder</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-user"></i>
+              </div>
+              <input type="text" name="accountHolder" class="form-control" placeholder="Account holder name..."
+                     [(ngModel)]="rule.accountHolder">
+            </div>
+            <span *ngIf="hasError('accountHolder')" class="help-block">{{ getError('accountHolder') }}</span>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group" [class.has-error]="hasError('account')">
+            <label>Account</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-bank"></i>
+              </div>
+              <input type="text" name="account" class="form-control" placeholder="Account..."
+                     [(ngModel)]="rule.account">
+            </div>
+            <span *ngIf="hasError('account')" class="help-block">{{ getError('account') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label>From amount</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-money"></i>
+              </div>
+              <input type="text" name="amountFrom" class="form-control" placeholder="&euro; 50"
+                     [(ngModel)]="rule.amount.from">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label>To amount</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-money"></i>
+              </div>
+              <input type="text" name="amountTo" class="form-control" placeholder="&euro; 110"
+                     [(ngModel)]="rule.amount.to">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>Tag</label>
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-tag"></i>
+              </div>
+              <input id="country" name="tags" type="text" class="form-control validate filter-input"
+                     [(ngModel)]=query (keyup)=tagsOnKeyUp()>
+              <span class="input-group-addon">{{ selectedTags.length }} selected</span>
+            </div>
+
+            <label id="mt-rule-form-selected-tags-label">Selected tags:</label>
+            <span class="label label-info mt-rule-remove-selected-tag" *ngIf="!(selectedTags.length > 0)">
+              No tags selected
+            </span>
+            <template [ngIf]="selectedTags.length > 0">
+              <span class="mt-rule-form-selected-tag label label-info" *ngFor="let tag of selectedTags">
+                  {{ tag.name }} <i class="glyphicon glyphicon-remove-circle" (click)="remove(tag);"></i>
+              </span>
+            </template>
+
+            <div id="mt-rule-form-tag-suggestions" *ngIf="filteredList.length > 0">
+              <ul id="mt-rule-form-tag-autocompletion">
+                <li *ngFor="let item of filteredList" (click)="select(item)">
+                  <i class="fa fa-arrow-circle-right" [ngStyle]="{ 'color': '#fff' }"></i>
+                  <label class="mt-rule-form-tag-autocompletion-item">{{item.name}}</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="mt-rule-archived-transactions" class="checkbox checkbox-primary">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <input id="mt-rule-archived-transactions-checkbox" type="checkbox"
+                         [checked]="rule.hasOption('ARCHIVED')" (click)="archivedTransactionsOnClick()">
+                  <label for="mt-rule-archived-transactions-checkbox">
+                    Filter by archived transactions
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <div id="mt-rule-locked-transactions" class="checkbox checkbox-primary">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <input id="mt-rule-locked-transactions-checkbox" type="checkbox"
+                         [checked]="rule.hasOption('LOCKED')" (click)="lockedTransactionsOnClick()">
+                  <label for="mt-rule-locked-transactions-checkbox">
+                    Rule by locked transactions
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <div id="mt-rule-untagged-transactions" class="checkbox checkbox-primary">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <input id="mt-rule-untagged-transactions-checkbox" type="checkbox"
+                         [checked]="rule.hasOption('UNTAGGED')" (click)="untaggedTransactionsOnClick()">
+                  <label for="mt-rule-untagged-transactions-checkbox">
+                    Rule by locked transactions
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-footer" *ngIf="editingMode">
+        <button type="button" *ngIf="rule.id" (click)="deleteOnClick()" class="btn btn-default pull-left">Delete</button>
+        <button type="submit" *ngIf="!rule.id" (click)="onCreate()" class="btn btn-primary pull-right" [disabled]="!ruleForm.form.valid">
+          Create rule
+        </button>
+        <button type="submit" *ngIf="filter.id" (click)="onUpdate()" class="btn btn-primary pull-right" [disabled]="!ruleForm.form.valid">
+          Update rule
+        </button>
+      </div>
+    </div>
+  </form>
+  <!-- /.box-body -->
+</div>

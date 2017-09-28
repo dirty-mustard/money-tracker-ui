@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12">
+    <mt-rule-list [(selectedRule)]="rule" [rules]="availableRules"
+                   (newOnClick)="newOnClick($event)" (onRuleSelected)="onRuleSelected($event)"
+                   (toggleRuleDetailsOnClick)="toggleRuleDetailsOnClick($event)"></mt-rule-list>
+  </div>
+  <div class="col-md-12">
+    <mt-rules-form [editingMode]="true" [errors]="errors" [errorMessage]="errorMessage" [rule]="rule"
+                   [availableTags]="tags" (deleteOnClick)="deleteOnClick($event)" (saveOnClick)="saveOnClick($event)"
+                   [selectedTags]="rule.tags" [collapsed]="ruleFormCollapsed"></mt-rules-form>
+  </div>
+</div>
