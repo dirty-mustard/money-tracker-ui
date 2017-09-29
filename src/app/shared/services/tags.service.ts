@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Tag, Error } from '../models';
 import { Observable } from 'rxjs/Rx';
+import { environment } from "../../../environments/environment";
 
 declare var _ : any;
 
@@ -12,7 +13,7 @@ export class TagsService {
     constructor(private http: Http) {}
 
     public create(tag: Tag): Observable<Tag> {
-        return this.http.post(`http://localhost:8080/api/tags`, tag)
+        return this.http.post(`${environment.apiUrl}/tags`, tag)
           .map((r: Response) => Tag.fromJson(r.json()))
           .catch(this.errorHandler);
     }
@@ -22,18 +23,18 @@ export class TagsService {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
 
-      return this.http.put(`http://localhost:8080/api/tags/${tag.id}`, body, options)
+      return this.http.put(`${environment.apiUrl}/tags/${tag.id}`, body, options)
         .map((r: Response) => Tag.fromJson(r.json()))
         .catch(this.errorHandler);
     }
 
     public delete(tag: Tag) : Observable<Response> {
-      return this.http.delete(`http://localhost:8080/api/tags/${tag.id}`)
+      return this.http.delete(`${environment.apiUrl}/tags/${tag.id}`)
         .catch(this.errorHandler);
     }
 
     public list(): Observable<Tag[]> {
-        return this.http.get(`http://localhost:8080/api/tags`)
+        return this.http.get(`${environment.apiUrl}/tags`)
           .map((r: Response) => {
             if (r) {
               let tags: Tag[] = [];
@@ -47,13 +48,13 @@ export class TagsService {
     }
 
     public get(id): Observable<Tag> {
-      return this.http.get(`http://localhost:8080/api/tags/${id}`)
+      return this.http.get(`${environment.apiUrl}/tags/${id}`)
         .map((r: Response) => Tag.fromJson(r.json()))
         .catch(this.errorHandler);
     }
 
     public getByList(ids: number[]): Observable<Tag[]> {
-      return this.http.get(`http://localhost:8080/api/tags?ids=${ids.join(',')}`)
+      return this.http.get(`${environment.apiUrl}/tags?ids=${ids.join(',')}`)
         .map((r: Response) => {
           let tags: Tag[] = [];
           _.each(r.json(), f => tags.push(Tag.fromJson(f)));

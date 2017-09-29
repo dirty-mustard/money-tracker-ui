@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 import { Transaction, Filter } from '../models';
+import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class TransactionsService {
@@ -17,7 +18,7 @@ export class TransactionsService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://localhost:8080/api/transactions/_search', body, options)
+    return this.http.post(`${environment.apiUrl}/api/transactions/_search`, body, options)
       .map((response: Response) => response.json() as Transaction[])
       .catch(this.handleError);
   }

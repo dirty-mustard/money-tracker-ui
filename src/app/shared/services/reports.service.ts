@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Report, Error } from '../models';
 import { Observable } from 'rxjs/Rx';
+import { environment } from "../../../environments/environment";
 
 declare var _ : any;
 
@@ -12,7 +13,7 @@ export class ReportsService {
     constructor(private http: Http) {}
 
     public create(report: Report): Observable<Report> {
-        return this.http.post(`http://localhost:8080/api/reports`, report)
+        return this.http.post(`${environment.apiUrl}/reports`, report)
           .map((r: Response) => Report.fromJson(r.json()))
           .catch(this.errorHandler);
     }
@@ -22,18 +23,18 @@ export class ReportsService {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
 
-      return this.http.put(`http://localhost:8080/api/reports/${report.id}`, body, options)
+      return this.http.put(`${environment.apiUrl}/reports/${report.id}`, body, options)
         .map((r: Response) => Report.fromJson(r.json()))
         .catch(this.errorHandler);
     }
 
     public delete(report: Report) : Observable<Response> {
-      return this.http.delete(`http://localhost:8080/api/reports/${report.id}`)
+      return this.http.delete(`${environment.apiUrl}/reports/${report.id}`)
         .catch(this.errorHandler);
     }
 
     public list(): Observable<Report[]> {
-        return this.http.get(`http://localhost:8080/api/reports`)
+        return this.http.get(`${environment.apiUrl}/reports`)
           .map((r: Response) => {
             if (r) {
               let reports: Report[] = [];
@@ -47,7 +48,7 @@ export class ReportsService {
     }
 
     public get(id): Observable<Report> {
-      return this.http.get(`http://localhost:8080/api/reports/${id}`)
+      return this.http.get(`${environment.apiUrl}/reports/${id}`)
         .map((r: Response) => Report.fromJson(r.json()))
         .catch(this.errorHandler);
     }

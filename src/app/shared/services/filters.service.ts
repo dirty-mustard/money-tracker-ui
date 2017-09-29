@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Filter, Error } from '../models';
 import { Observable } from 'rxjs/Rx';
+import { environment } from "../../../environments/environment";
 
 declare var _ : any;
 
@@ -12,7 +13,7 @@ export class FiltersService {
     constructor(private http: Http) {}
 
     public create(filter: Filter): Observable<Filter> {
-        return this.http.post(`http://localhost:8080/api/filters`, filter)
+        return this.http.post(`${environment.apiUrl}/filters`, filter)
           .map((r: Response) => Filter.fromJson(r.json()))
           .catch(this.errorHandler);
     }
@@ -22,18 +23,18 @@ export class FiltersService {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
 
-      return this.http.put(`http://localhost:8080/api/filters/${filter.id}`, body, options)
+      return this.http.put(`${environment.apiUrl}/filters/${filter.id}`, body, options)
         .map((r: Response) => Filter.fromJson(r.json()))
         .catch(this.errorHandler);
     }
 
     public delete(filter: Filter) : Observable<Response> {
-      return this.http.delete(`http://localhost:8080/api/filters/${filter.id}`)
+      return this.http.delete(`${environment.apiUrl}/filters/${filter.id}`)
         .catch(this.errorHandler);
     }
 
     public list(): Observable<Filter[]> {
-        return this.http.get(`http://localhost:8080/api/filters`)
+        return this.http.get(`${environment.apiUrl}/filters`)
           .map((r: Response) => {
             if (r) {
               let filters: Filter[] = [];
@@ -47,7 +48,7 @@ export class FiltersService {
     }
 
     public get(id): Observable<Filter> {
-      return this.http.get(`http://localhost:8080/api/filters/${id}`)
+      return this.http.get(`${environment.apiUrl}/filters/${id}`)
         .map((r: Response) => Filter.fromJson(r.json()))
         .catch(this.errorHandler);
     }
