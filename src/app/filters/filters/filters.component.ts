@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { isUndefined } from "util";
-import { Error } from "../../shared";
-import { Filter, Tag, FilterAmount } from "../../shared/models";
-import { FiltersFormService } from "../shared";
+import { isUndefined } from 'util';
+import { Error } from '../../shared';
+import { Filter, Tag, FilterAmount } from '../../shared/models';
+import { FiltersFormService } from '../shared';
 
-declare var _ : any;
+declare const _: any;
 
 @Component({
   selector: 'mt-filter',
@@ -13,9 +13,9 @@ declare var _ : any;
 })
 export class FiltersComponent implements OnInit, OnChanges {
 
-  @Input('filterFormCollapsed') filterFormCollapsed: boolean = false;
+  @Input('filterFormCollapsed') filterFormCollapsed = false;
   @Input('filterId') filterId: number;
-  @Output('filterOnChange') filterOnChange : EventEmitter<number> = new EventEmitter<number>();
+  @Output('filterOnChange') filterOnChange: EventEmitter<number> = new EventEmitter<number>();
 
   filter: Filter = new Filter();
   availableFilters: Filter[] = [];

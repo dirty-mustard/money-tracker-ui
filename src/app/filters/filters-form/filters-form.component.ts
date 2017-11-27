@@ -1,9 +1,9 @@
 import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
-import { Tag, ARCHIVED, LOCKED, UNTAGGED } from "../../shared/models";
-import { Filter } from "../../shared/models";
+import { Tag, ARCHIVED, LOCKED, UNTAGGED } from '../../shared/models';
+import { Filter } from '../../shared/models';
 
-declare var _ : any;
+declare const _: any;
 
 const MAX_AMOUNT_SUGGESTED_TAGS = 10;
 
@@ -14,19 +14,19 @@ const MAX_AMOUNT_SUGGESTED_TAGS = 10;
 })
 export class FiltersFormComponent implements OnChanges {
 
-  @Input('editingMode') editingMode: boolean = false;
-  @Input('collapsed') collapsed: boolean = false;
+  @Input('editingMode') editingMode = false;
+  @Input('collapsed') collapsed = false;
   @Input('filter') filter: Filter = new Filter();
   @Input('availableTags') availableTags: Tag[] = [];
-  @Input('selectedTags') selectedTags : Tag[] = [];
+  @Input('selectedTags') selectedTags: Tag[] = [];
   @Input('errors') errors: Object = {};
   @Input('errorMessage') errorMessage: String;
-  @Output('saveOnClick') saveEvent = new EventEmitter<Filter>();
-  @Output('deleteOnClick') deleteEvent = new EventEmitter<Filter>();
+  @Output() saveEvent = new EventEmitter<Filter>();
+  @Output() deleteEvent = new EventEmitter<Filter>();
 
   public query = '';
-  public filteredList = [];
-  public tagsToShow : Tag[] = [];
+  public filteredList: any[] = [];
+  public tagsToShow: Tag[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
     if (_.contains(_.keys(changes), 'filter')) {
@@ -36,10 +36,10 @@ export class FiltersFormComponent implements OnChanges {
 
   tagsOnKeyUp() {
     this.tagsToShow = this.availableTags.filter((t: Tag) => {
-      return this.selectedTags.filter((tag: Tag) => _.isEqual(tag, t)).length <= 0
+      return this.selectedTags.filter((tag: Tag) => _.isEqual(tag, t)).length <= 0;
     });
 
-    this.filteredList = (this.query !== "")
+    this.filteredList = (this.query !== '')
       ? this.tagsToShow.filter((t: Tag) => {
           return t.name.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
         })
@@ -65,15 +65,15 @@ export class FiltersFormComponent implements OnChanges {
         : this.filter.addOption(LOCKED);
   }
 
-  select(item: Tag){
-    this.query = "";
+  select(item: Tag) {
+    this.query = '';
     this.selectedTags.push(item);
     this.filteredList = [];
   }
 
   remove(item: Tag) {
-    let i = this.selectedTags.indexOf(item);
-    if(i != -1) {
+    const i = this.selectedTags.indexOf(item);
+    if (i !== -1) {
       this.selectedTags.splice(i, 1);
     }
   }
@@ -92,7 +92,7 @@ export class FiltersFormComponent implements OnChanges {
     this.deleteEvent.emit(this.filter);
   }
 
-  containsErrors() : boolean {
+  containsErrors(): boolean {
     return _.keys(this.errors).length > 0;
   }
 

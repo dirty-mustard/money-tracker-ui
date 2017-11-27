@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { Filter, Tag } from '../../shared/models';
 import { FiltersService, TagsService } from "../../shared/services";
 
-declare var _ : any;
+declare const _: any;
 
 @Injectable()
 export class FiltersFormService {
@@ -13,22 +13,25 @@ export class FiltersFormService {
   constructor(private filterService: FiltersService, private tagService: TagsService) {}
 
   public get(id: number): Observable<Filter> {
-    let filter = this.filterService.get(id);
+    const filter = this.filterService.get(id);
     return filter
-      .flatMap((filter: Filter) => {
-        let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
-        return Observable.forkJoin(Observable.of(filter), (this.tagService.getByList(tagIds)));
+      .flatMap((f: Filter) => {
+        const tagIds = _.map(f.tags, (t: Tag) => t);
+        return !_.isEmpty(tagIds)
+          ? Observable.forkJoin(Observable.of(f), (this.tagService.getByList(tagIds)))
+          : Observable.forkJoin(Observable.of(f));
       })
       .map((response: Array<any>) => {
-        let filter: Filter = response[0];
+      console.log(response);
+        const f: Filter = response[0];
         if (!_.isUndefined(response[1])
           && _.isArray(response[1])
           && response[1].length > 0
         ) {
-          filter.tags = response[1];
+          f.tags = response[1];
         }
 
-        return filter;
+        return f;
       });
   }
 
@@ -42,7 +45,7 @@ export class FiltersFormService {
 
   public create(filter: Filter): Observable<Filter> {
     let f = filter;
-    f.tags = f.tags.map((t: Tag) => { return t.id });
+    f.tags = f.tags.map((t: Tag) => t.id);
     return this.filterService.create(filter)
       .flatMap((filter: Filter) => {
         let tagIds = _.map(filter.tags, (t: Tag) => { return t; });
