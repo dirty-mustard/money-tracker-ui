@@ -1,1 +1,92 @@
+.box-title {
+  padding: 5px;
+  font-weight: bold;
+}
 
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul > li {
+
+  flex-basis: auto;
+  flex-direction: row;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.transaction-group:after {
+  height: 1px;
+  position: absolute;
+  width: calc(100% - 32px);
+  background: #F4F4F4;
+  left: 15px;
+  content: '';
+}
+
+header.header {
+  line-height: 24px;
+  align-items: baseline;
+  flex-direction: row;
+  display: flex;
+  align-self: auto;
+  flex-basis: auto;
+  justify-content: space-between;
+}
+
+header.header > h4 {
+  margin-left: 16px;
+}
+header.header > span,
+header.header > h4 {
+  line-height: 24px;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 16px;
+  flex-basis: auto;
+  display: block;
+}
+
+header.header > span,
+header.header > h4 > time {
+  color: grey;
+  font-weight: bold;
+}
+span.item-amount {
+  margin-top: 10px;
+}
+.item {
+  display: list-item;
+}
+
+.item-button {
+  cursor: pointer;
+}
+.item-button:hover {
+  background-color: #f5f5f5;
+}
+
+.item-primary-row {
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.item-heading {
+  flex: 1 0 200px;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+.item-amount {
+  display: flex;
+  flex-direction: row;
+  flex-basis: auto;
+  font-weight: 700;
+  font-size:16px;
+}
