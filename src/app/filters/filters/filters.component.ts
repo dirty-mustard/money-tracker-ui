@@ -48,7 +48,7 @@ export class FiltersComponent implements OnInit, OnChanges {
     this.clearErrors();
   }
 
-  public deleteOnClick(filter) {
+  public deleteOnClick(filter: Filter) {
     this.filterFormService.delete(filter).subscribe(this.deleteSuccessHandler.bind(this));
   }
 
@@ -74,7 +74,7 @@ export class FiltersComponent implements OnInit, OnChanges {
 
   private successHandler(f: Filter) {
     this.filter = f;
-    this._loadFilters();
+    this._loadFilter(f.id);
     this.clearErrors();
   }
 

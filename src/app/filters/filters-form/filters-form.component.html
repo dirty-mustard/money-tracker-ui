@@ -32,6 +32,11 @@
                 <i class="fa fa-calendar"></i>
               </div>
               <input type="text" name="date_from" class="form-control" placeholder="Enter from date..." [(ngModel)]="filter.from">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-danger btn-flat" (click)="removeFromDate()">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              </span>
             </div>
             <span *ngIf="hasError('from')" class="help-block">{{ getError('from') }}</span>
           </div>
@@ -46,6 +51,11 @@
               </div>
               <input type="text" name="date_to" class="form-control" placeholder="Enter to date..."
                      [(ngModel)]="filter.to">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-danger btn-flat" (click)="removeToDate()">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              </span>
             </div>
             <span *ngIf="hasError('to')" class="help-block">{{ getError('to') }}</span>
           </div>

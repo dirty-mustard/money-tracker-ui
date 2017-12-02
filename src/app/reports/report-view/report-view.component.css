@@ -1,0 +1,10 @@
+.box-body {
+  padding: 0;
+}
+
+.box-header h3 {
+  font-size: 18px;
+  padding: 5px;
+  margin: 0;
+  font-weight: bold;
+}

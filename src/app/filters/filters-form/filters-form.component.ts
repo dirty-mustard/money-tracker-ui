@@ -21,8 +21,8 @@ export class FiltersFormComponent implements OnChanges {
   @Input('selectedTags') selectedTags: Tag[] = [];
   @Input('errors') errors: Object = {};
   @Input('errorMessage') errorMessage: String;
-  @Output() saveEvent = new EventEmitter<Filter>();
-  @Output() deleteEvent = new EventEmitter<Filter>();
+  @Output('saveOnClick') saveEvent = new EventEmitter<Filter>();
+  @Output('deleteEvent') deleteEvent = new EventEmitter<Filter>();
 
   public query = '';
   public filteredList: any[] = [];
@@ -94,6 +94,14 @@ export class FiltersFormComponent implements OnChanges {
 
   containsErrors(): boolean {
     return _.keys(this.errors).length > 0;
+  }
+
+  removeFromDate() {
+    this.filter.from = null;
+  }
+
+  removeToDate() {
+    this.filter.to = null;
   }
 
   hasError(field: string) {

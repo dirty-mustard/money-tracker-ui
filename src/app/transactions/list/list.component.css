@@ -67,6 +67,8 @@ span.item-amount {
 }
 .item-button:hover {
   background-color: #f5f5f5;
+  border-left: 5px solid #c6c6c6;
+  padding-left: 10px;
 }
 
 .item-primary-row {
