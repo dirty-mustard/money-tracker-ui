@@ -8,3 +8,12 @@
   top: 3px;
   position: relative;
 }
+
+.checkbox input[type="checkbox"] {
+  position: inherit;
+  margin-left: 0;
+}
+
+#mt-report-form-new-form-btn {
+  color: #fff;
+}

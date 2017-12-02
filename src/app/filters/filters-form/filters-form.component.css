@@ -68,3 +68,8 @@ ul#mt-filter-form-tag-autocompletion li:hover {
   top: 3px;
   position: relative;
 }
+
+.checkbox input[type="checkbox"] {
+  position: inherit;
+  margin-left: 10px;
+}

@@ -1,7 +1,7 @@
-import { Component, Input } from "@angular/core";
-import { Transaction } from "../../shared/models/transaction.model";
+import { Component, Input } from '@angular/core';
+import { Transaction } from '../../shared/models/transaction.model';
 
-declare var _ : any;
+declare const _: any;
 
 @Component({
   selector: 'mt-transactions-list',
@@ -12,13 +12,13 @@ export class TransactionsListComponent {
 
   @Input('transactions') transactions: Transaction[] = [];
 
-  public transactionsGroupedByDate() : any {
-    let groupedTransactions = [];
+  public transactionsGroupedByDate(): any {
+    const groupedTransactions: any[] = [];
 
-    let uniqueDates = _.uniq(this.transactions.map((t: Transaction) => t.date), true);
+    const uniqueDates: any[] = _.uniq(this.transactions.map((t: Transaction) => t.date), true);
     uniqueDates.forEach((uniqueDate) => {
-      let transactions = this.transactions.filter((t: Transaction) => {
-        return t.date == uniqueDate;
+      const transactions = this.transactions.filter((t: Transaction) => {
+        return t.date === uniqueDate;
       });
       groupedTransactions.push({ key: uniqueDate, values: transactions });
     });

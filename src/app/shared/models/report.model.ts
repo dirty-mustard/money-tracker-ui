@@ -9,11 +9,11 @@ export class Report {
     public createdAt: string = undefined;
     public name: string = undefined;
     public icon: string = undefined;
-    public filter = undefined;
+    public filter: any = undefined;
     public charts: string[] = [];
 
-    public static fromJson(json: Object) : Report {
-        let report = new Report();
+    public static fromJson(json: Object): Report {
+        const report = new Report();
         _.each(_.keys(report), p => {
             if (_.contains(_.keys(json), p)) {
                 report[p] = json[p] ;
@@ -23,7 +23,7 @@ export class Report {
         return report;
     }
 
-    public hasChart(chart: string) : boolean {
+    public hasChart(chart: string): boolean {
         return _.contains(this.charts, chart);
     }
 
@@ -35,7 +35,7 @@ export class Report {
 
     public removeChart(chart: string) {
         if (_.contains(this.charts, chart)) {
-            this.charts.splice(this.charts.indexOf(chart), 1)
+            this.charts.splice(this.charts.indexOf(chart), 1);
         }
     }
 
