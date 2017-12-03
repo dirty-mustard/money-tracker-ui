@@ -1,44 +1,42 @@
-import { Routes, RouterModule }   from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { CoreComponent } from './core/core.component';
 
-import { FiltersComponent } from "./filters/filters";
-import { ReportsFormComponent } from "./reports/reports-form";
-import { ReportViewComponent } from "./reports/report-view";
-import { TransactionsSearchComponent } from "./transactions/transactions-search";
-import { ReportsResolver } from "./shared/resolvers/reports.resolver";
-
-export const appRoutes: Routes = [
-  { path: '', component: TransactionsSearchComponent },
-  { path: 'filters', component: FiltersComponent },
+export const routes: Routes = [
   {
-    path: 'reports',
-    children: [
-      {
-        path: 'new',
-        component: ReportsFormComponent
-      },
-      {
-        path: ':id',
-        component: ReportViewComponent,
-      },
-      {
-        path: ':id/configure',
-        component: ReportsFormComponent,
-        resolve: {
-          report: ReportsResolver
-        }
-      }
-    ]
+    path: '',
+    redirectTo: 'search',
+    pathMatch: 'full',
   },
   {
-    path: 'transactions/search',
-    component: TransactionsSearchComponent,
+    path: '',
+    component: CoreComponent,
+    data: {
+      title: 'Home'
+    },
+    children: [
+      {
+        path: 'search',
+        loadChildren: './views/search/search.module#SearchModule'
+      },
+      {
+        path: 'reports',
+        loadChildren: './views/report/report.module#ReportModule'
+      },
+      {
+        path: 'filters',
+        loadChildren: './views/filter/filter.module#FilterModule'
+      },
+      {
+        path: 'tags',
+        loadChildren: './views/tag/tag.module#TagModule'
+      }
+    ]
   }
 ];
 
-
-export const appRoutingProviders: any[] = [
-
-];
-
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+@NgModule({
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}

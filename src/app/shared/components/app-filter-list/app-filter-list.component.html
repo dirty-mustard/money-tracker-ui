@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col">
+
+    <div class="list-group">
+      <ng-template ngIf [ngIf]="filters?.length <= 0">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">No filters found</h5>
+          </div>
+        </a>
+      </ng-template>
+      <ng-template ngFor let-filter [ngForOf]="filters">
+        <a class="list-group-item list-group-item-action flex-column align-items-start" style="cursor:pointer;"
+           (click)="filterOnClick(filter)">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ filter.name }}</h5>
+            <small>Created at: {{ filter.createdAt }}</small>
+          </div>
+          <small *ngIf="filter.from" class="mb-1">
+            <strong>From:</strong> <mark>{{ filter.from }}</mark>
+          </small>
+          <small *ngIf="filter.to" class="mb-1">
+            <strong>To:</strong> <mark>{{ filter.to }}</mark>
+          </small>
+          <small *ngIf="filter.description" class="mb-1">
+            <strong>Description:</strong> <mark>{{ filter.description }}</mark>
+          </small>
+          <small *ngIf="filter.amount && filter.amount.from" class="mb-1">
+            <strong>From amount:</strong> <mark>{{ filter.amount.from }}</mark>
+          </small>
+          <small *ngIf="filter.amount && filter.amount.to" class="mb-1">
+            <strong>To amount:</strong> <mark>{{ filter.amount.to }}</mark>
+          </small>
+          <small *ngIf="filter.accountHolder" class="mb-1">
+            <strong>Account holder:</strong> <mark>{{ filter.accountHolder }}</mark>
+          </small>
+          <small *ngIf="filter.account" class="mb-1">
+            <strong>Account:</strong> <mark>{{ filter.account }}</mark>
+          </small>
+          <small *ngIf="filter.offsetAccount" class="mb-1">
+            <strong>Offset account:</strong> <mark>{{ filter.offsetAccount }}</mark>
+          </small>
+          <small *ngIf="filter.tags.length > 0" class="mb-1">
+            <strong>Tags:</strong> <mark>{{ filter.tags.join(", ") }}</mark>
+          </small>
+          <small *ngIf="filter.options.length > 0">
+            <strong>Options:</strong> <mark>{{ filter.options.join(", ") }}</mark>
+          </small>
+        </a>
+      </ng-template>
+    </div>
+
+  </div>
+</div>

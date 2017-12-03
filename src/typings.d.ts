@@ -1,5 +1,5 @@
 /* SystemJS module definition */
-declare var module: {
+declare const module: {
   id: string;
 };
 
@@ -8,3 +8,5 @@ interface JQueryStatic {
 }
 
 declare let Chartist: any;
+
+declare module 'underscore';

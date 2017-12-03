@@ -1,19 +1,19 @@
-declare var _: any;
-
 export class Tag {
 
-  public id: number = undefined;
-  public name: string = undefined;
-  public color: string = undefined;
+  public id: number;
+  public name: string;
+  public color: string;
+  public createdAt: string;
 
-  public static fromJson(json: Object) : Tag {
-    let tag = new Tag();
-    _.each(_.keys(tag), p => {
-      if (_.contains(_.keys(json), p)) {
-        tag[p] = json[p] ;
-      }
-    });
-
-    return tag;
+  constructor(
+    id: number,
+    name: string,
+    color: string,
+    createdAt: string
+  ) {
+    this.id = id;
+    this.name = name;
+    this.color = color;
+    this.createdAt = createdAt;
   }
 }

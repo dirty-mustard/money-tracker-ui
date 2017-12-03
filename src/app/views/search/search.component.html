@@ -1,0 +1,39 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <strong>Search</strong> Form
+        </div>
+        <div class="card-body">
+          <form action="" method="post" class="form-inline">
+            <div class="form-group">
+              <label for="filter" class="mr-2">By filter</label>
+              <select title="filter" id="filter" class="form-control form-control-sm">
+                <option>Small select</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Transactions ({{ transactions.length }})
+        </div>
+        <div class="card-body">
+
+          <app-transaction-list [transactions]="transactions"></app-transaction-list>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

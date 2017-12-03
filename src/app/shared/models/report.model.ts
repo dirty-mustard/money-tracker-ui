@@ -1,4 +1,6 @@
-declare var _: any;
+import * as _ from 'underscore';
+
+import { Filter } from './filter.model';
 
 export const PIE = 'PIE';
 export const LINE = 'LINE';
@@ -12,15 +14,20 @@ export class Report {
     public filter: any = undefined;
     public charts: string[] = [];
 
-    public static fromJson(json: Object): Report {
-        const report = new Report();
-        _.each(_.keys(report), p => {
-            if (_.contains(_.keys(json), p)) {
-                report[p] = json[p] ;
-            }
-        });
-
-        return report;
+    constructor(
+      id: number,
+      createdAt: string,
+      name: string,
+      icon: string,
+      filter: Filter|number,
+      charts: string[]
+    ) {
+      this.id = id;
+      this.createdAt = createdAt;
+      this.name = name;
+      this.icon = icon;
+      this.filter = filter;
+      this.charts = charts;
     }
 
     public hasChart(chart: string): boolean {
@@ -38,5 +45,4 @@ export class Report {
             this.charts.splice(this.charts.indexOf(chart), 1);
         }
     }
-
 }

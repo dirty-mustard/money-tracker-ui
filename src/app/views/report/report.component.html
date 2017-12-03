@@ -1,0 +1,16 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Reports ({{ reports.length }})
+        </div>
+        <div class="card-body">
+
+          <app-report-list [reports]="reports" (reportSelected)="onReportSelected($event)"></app-report-list>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
-import { Tag } from './tag.model';
+import * as _ from 'underscore';
 
-declare var _: any;
+import { Tag } from './tag.model';
 
 export class Filter {
 
@@ -14,22 +14,35 @@ export class Filter {
   public accountHolder: string = undefined;
   public account: string = undefined;
   public offsetAccount: string = undefined;
-  public tags: any[] = [];
+  public tags: Tag[]|number[] = [];
   public options: string[] = [];
 
-  public static fromJson(json: Object): Filter {
-    const filter = new Filter();
-    _.each(_.keys(filter), (p: any) => {
-      if (_.contains(_.keys(json), p)) {
-        filter[p] = json[p] ;
-      }
-    });
-
-    return filter;
-  }
-
-  constructor() {
-    this.amount = new FilterAmount();
+  constructor(
+    id: number,
+    createdAt: string,
+    name: string,
+    from: string,
+    to: string,
+    description: string,
+    amount: FilterAmount,
+    accountHolder: string,
+    account: string,
+    offsetAccount: string,
+    tags: Tag[]|number[],
+    options: string[]
+  ) {
+    this.id = id;
+    this.createdAt = createdAt;
+    this.name = name;
+    this.from = from;
+    this.to = to;
+    this.description = description;
+    this.amount = amount;
+    this.accountHolder = accountHolder;
+    this.account = account;
+    this.offsetAccount = offsetAccount;
+    this.tags = tags;
+    this.options = options;
   }
 
   public hasOption(option: string): boolean {

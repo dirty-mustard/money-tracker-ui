@@ -1,0 +1,39 @@
+// Here you can add other styles
+
+$enable-rounded: true !default;
+
+@mixin border-radius($radius: $border-radius) {
+  border-radius: $radius;
+}
+
+.social-box {
+  &.expenses {
+    i {
+      color: #fff;
+      background: $youtube;
+    }
+  }
+
+  &.income {
+    i {
+      color: #fff;
+      background: $xing;
+    }
+  }
+}
+
+
+.app-header.navbar {
+  .navbar-brand {
+    padding: 0 0 0 1rem;
+    line-height: 53px;
+  }
+}
+
+.card {
+  box-shadow: 0 1px 5px 2px rgba(0,0,0,.1);
+
+  .card-header {
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
+  }
+}

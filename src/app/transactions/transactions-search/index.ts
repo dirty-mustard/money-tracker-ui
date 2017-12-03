@@ -1,1 +1,0 @@
-export * from './transactions-search.component';

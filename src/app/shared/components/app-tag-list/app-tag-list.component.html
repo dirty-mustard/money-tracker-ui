@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col">
+
+    <div class="list-group">
+      <ng-template ngIf [ngIf]="tags?.length <= 0">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">No tags found</h5>
+          </div>
+        </a>
+      </ng-template>
+      <ng-template ngFor let-tag [ngForOf]="tags">
+        <a [style.border-left-color]="tag.color" [style.border-left-width]="'4px'" class="list-group-item list-group-item-action flex-column align-items-start" style="cursor:pointer;"
+           (click)="tagOnClick(tag)">
+          <div class="d-flex w-100 justify-content-start">
+            <p><abbr title="attribute">{{ tag.name }}</abbr></p>
+            <small class="ml-auto">Created at: {{ tag.createdAt }}</small>
+          </div>
+        </a>
+      </ng-template>
+    </div>
+
+  </div>
+</div>
