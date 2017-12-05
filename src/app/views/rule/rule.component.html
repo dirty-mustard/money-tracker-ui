@@ -1,0 +1,16 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Tags ({{ tags?.length }})
+        </div>
+        <div class="card-body">
+
+          <app-rule-list [rules]="rules" (ruleSelected)="onRuleSelectedHandler($event)"></app-rule-list>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

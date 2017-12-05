@@ -30,6 +30,10 @@ export const routes: Routes = [
       {
         path: 'tags',
         loadChildren: './views/tag/tag.module#TagModule'
+      },
+      {
+        path: 'rules',
+        loadChildren: './views/rule/rule.module#RuleModule'
       }
     ]
   }

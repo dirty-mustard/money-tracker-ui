@@ -56,7 +56,7 @@ import { AppRoutingModule } from '../app.routing';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
   ],
   declarations: [
     ...APP_COMPONENTS,

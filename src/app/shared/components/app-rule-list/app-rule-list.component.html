@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col">
+
+    <div class="list-group">
+      <ng-template ngIf [ngIf]="rules?.length <= 0">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">No rules found</h5>
+          </div>
+        </a>
+      </ng-template>
+      <ng-template ngFor let-rule [ngForOf]="rules">
+        <a class="list-group-item list-group-item-action flex-column align-items-start" style="cursor:pointer;"
+           (click)="ruleOnClick(rule)">
+          <div class="d-flex w-100 justify-content-start">
+            <div class="col">
+              <h5 class="mb-1">Conditions</h5>
+              <small>Created at: {{ rule.createdAt }}</small>
+            </div>
+            <div class="col">
+              <h5 class="mb-1">Actions</h5>
+              <small>Apply tags: <mark>{{ tagsAsString(rule) }}</mark></small>
+            </div>
+            <div class="col-1 ml-auto text-right">
+              <i class="fa fa-1x fa-ellipsis-v" aria-hidden="true"></i>
+            </div>
+          </div>
+        </a>
+      </ng-template>
+    </div>
+
+  </div>
+</div>

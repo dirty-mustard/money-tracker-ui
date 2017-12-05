@@ -1,0 +1,4 @@
+<select id="select" name="select" class="form-control btn-light">
+  <option value="0">Select filter</option>
+  <option *ngFor="let filter of filters" value="filter.id">{{ filter.name }}</option>
+</select>

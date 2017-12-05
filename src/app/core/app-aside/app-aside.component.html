@@ -1,3 +1,54 @@
 <aside class="aside-menu">
-  
+  <tabset>
+    <tab>
+      <ng-template tabHeading><i class="ion-ios-pricetags-outline"></i></ng-template>
+      <div class="p-3">
+
+        <h6>Create a tag</h6>
+
+        <div class="aside-options">
+          <div class="clearfix mt-4">
+            <form class="form">
+
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control form-control-sm" name="name" type="text" placeholder="name" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-sm btn-dark" type="button">Create</button>
+                  </span>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <hr>
+
+        <h6 class="pb-2">Overview</h6>
+
+        <div class="tag">
+          <div class="text-uppercase mb-1 mt-1"><small><b>Supermarket</b> (348)</small></div>
+          <div class="progress progress-xs">
+            <div class="progress-bar" role="progressbar" style="background-color: #0000ff; width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="tag">
+          <div class="text-uppercase mb-1 mt-1"><small><b>Income</b> (123)</small></div>
+          <div class="progress progress-xs">
+            <div class="progress-bar" role="progressbar" style="background-color: #00ff00; width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="tag">
+          <div class="text-uppercase mb-1 mt-1"><small><b>Expenses</b> (23)</small></div>
+          <div class="progress progress-xs">
+            <div class="progress-bar" role="progressbar" style="background-color: #ff0000; width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+      </div>
+    </tab>
+  </tabset>
 </aside>

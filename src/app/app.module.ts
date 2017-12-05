@@ -17,7 +17,7 @@ import { CoreModule } from './core/core.module';
     CoreModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   providers: [{
     provide: LocationStrategy,

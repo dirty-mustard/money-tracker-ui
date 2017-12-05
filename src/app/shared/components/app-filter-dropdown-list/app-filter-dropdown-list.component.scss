@@ -1,0 +1,20 @@
+:host /deep/ ss-multiselect-dropdown .dropdown {
+  display: block;
+}
+
+:host /deep/ ss-multiselect-dropdown .dropdown-menu {
+  width: 350px;
+}
+
+:host /deep/ ss-multiselect-dropdown .dropdown-item:hover {
+  background-color: transparent;
+}
+
+:host /deep/ ss-multiselect-dropdown .dropdown-item a {
+  text-decoration: none;
+}
+
+:host /deep/ ss-multiselect-dropdown .caret {
+  float: right;
+  margin-top: 8px;
+}
