@@ -1,0 +1,20 @@
+### STAGE 1: Build ###
+
+FROM node:8.1.4-alpine
+
+RUN npm install --silent -g vue-cli
+
+COPY package.json package-lock.json /home/node/
+
+USER node
+
+WORKDIR /home/node
+
+## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+RUN npm i 
+
+COPY . .
+
+EXPOSE 30800
+
+CMD ["npm", "run", "dev"]
